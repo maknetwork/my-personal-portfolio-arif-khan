@@ -1,0 +1,48 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.vs/
+*.swp
+*.swo
+*~
+
+# Node Modules (if developer-icons npm is installed)
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Developer Icons (already copied what we need)
+developer-icons/
+
+# Personal Notes
+resume.md
+notes.md
+TODO.md
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build files (if any)
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
