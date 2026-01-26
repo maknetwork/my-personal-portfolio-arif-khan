@@ -44,8 +44,8 @@
 /* ------------------------------------------------*/
 /* Fonts Start */
 /* ------------------------------------------------*/
-/* Syne font */
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap");
+/* Space Grotesk and Inter fonts */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
 /* ------------------------------------------------*/
 /* Fonts End */
 /* ------------------------------------------------*/
@@ -64,8 +64,8 @@
 /* ------------------------------------------------*/
 :root {
   --_size: 1.6rem;
-  --_font-default: "Syne", sans-serif;
-  --_font-accent: "Syne", sans-serif;
+  --_font-default: "Inter", sans-serif;
+  --_font-accent: "Space Grotesk", sans-serif;
   --_radius-s: 1.5rem;
   --_radius-m: 2.2rem;
   --_radius-l: 3rem;
@@ -3886,12 +3886,22 @@ form textarea:required:valid {
   -moz-border-radius: var(--_radius-xl);
        border-radius: var(--_radius-xl);
   text-align: center;
+  transition: transform 0.3s cubic-bezier(0.23, 0.65, 0.74, 1.09), border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.tools-cards__card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 24px rgba(255, 107, 53, 0.15);
 }
 
 .tools-cards__icon {
   width: auto;
   height: 60px;
   margin: 0 auto;
+  transition: transform 0.4s cubic-bezier(0.23, 0.65, 0.74, 1.09), filter 0.3s ease;
+  filter: grayscale(0%);
 }
 @media only screen and (min-width: 768px) {
   .tools-cards__icon {
@@ -3909,9 +3919,20 @@ form textarea:required:valid {
   }
 }
 
+.tools-cards__card:hover .tools-cards__icon {
+  transform: translateY(-8px) scale(1.1);
+  filter: drop-shadow(0 8px 16px rgba(255, 107, 53, 0.3));
+}
+
 .tools-cards__caption {
   line-height: 1;
   margin-top: 1.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.tools-cards__card:hover .tools-cards__caption {
+  color: var(--t-accent);
+  transform: translateY(2px);
 }
 
 .tools-card {
