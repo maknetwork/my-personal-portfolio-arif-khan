@@ -264,6 +264,9 @@
       }
     </script>
     <!-- Structured Data - JSON-LD Schema.org Markup End -->
+
+    <!-- reCAPTCHA v3 Script -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lcfs1csAAAAALnh7gLTMQ_z1NxfVzfKtGMeTwIv"></script>
   </head>
 
   <body>
@@ -943,7 +946,7 @@
                     </div>
                     <div class="cards__image d-flex animate-in-up">
                       <img
-                        src="img/services/IMG_0684.JPG"
+                        src="img/services/backend.jpg"
                         alt="Backend Development"
                       />
                     </div>
@@ -999,7 +1002,7 @@
                     </div>
                     <div class="cards__image d-flex">
                       <img
-                        src="https://dummyimage.com/1200x900/4d4d4d/636363"
+                        src="img/services/cloud.jpg"
                         alt="Cloud Infrastructure"
                       />
                     </div>
@@ -1028,10 +1031,7 @@
                       </p>
                     </div>
                     <div class="cards__image d-flex animate-in-up">
-                      <img
-                        src="https://dummyimage.com/1200x900/4d4d4d/636363"
-                        alt="Testing & QA"
-                      />
+                      <img src="img/services/testing.jpg" alt="Testing & QA" />
                     </div>
                   </div>
                 </div>
@@ -1650,6 +1650,7 @@
                       <input
                         type="text"
                         name="Name"
+                        id="name"
                         placeholder="Your Name*"
                         required
                       />
@@ -1658,6 +1659,7 @@
                       <input
                         type="text"
                         name="Company"
+                        id="company"
                         placeholder="Company Name"
                       />
                     </div>
@@ -1665,6 +1667,7 @@
                       <input
                         type="email"
                         name="E-mail"
+                        id="email"
                         placeholder="Email Adress*"
                         required
                       />
@@ -1673,6 +1676,7 @@
                       <input
                         type="tel"
                         name="Phone"
+                        id="phone"
                         placeholder="Phone Number*"
                         required
                       />
@@ -1680,6 +1684,7 @@
                     <div class="col-12 form__item animate-in-up">
                       <textarea
                         name="Message"
+                        id="message"
                         placeholder="A Few Words*"
                         required
                       ></textarea>
@@ -1889,6 +1894,7 @@
 
     <!-- Load Scripts Start -->
     <script src="js/libs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
       gsap.registerPlugin(ScrollTrigger);
 
