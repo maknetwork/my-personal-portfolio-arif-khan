@@ -351,6 +351,280 @@ $(function () {
   const FUNCTION_URL =
     "https://kranetvlghtqvuukrnpy.supabase.co/functions/v1/submit-contact-form";
 
+  // TEST MODE - Function to preview success animation
+  window.testSuccessAnimation = function() {
+    const form = document.querySelector(".contact .form");
+    const reply = document.querySelector(".contact .form__reply");
+    
+    if (!form || !reply) {
+      console.error("Form elements not found");
+      return;
+    }
+    
+    // Trigger the success animation
+    showSuccessAnimation(form, reply, () => {
+      console.log("Test animation complete");
+    });
+  };
+
+  // Developer-style success animation function
+  function showSuccessAnimation(form, reply, onComplete) {
+    const replyIcon = reply.querySelector(".reply__icon");
+    const replyTitle = reply.querySelector(".reply__title");
+    const replyText = reply.querySelector(".reply__text");
+    const container = form.parentElement;
+
+    // Measure form height before hiding
+    const formHeight = form.offsetHeight;
+    
+    // Set container to exact form height to prevent shifting
+    container.style.height = formHeight + "px";
+    container.style.overflow = "hidden";
+
+    // Create glitch clone elements
+    const formClone1 = form.cloneNode(true);
+    const formClone2 = form.cloneNode(true);
+    formClone1.style.position = "absolute";
+    formClone2.style.position = "absolute";
+    formClone1.style.top = "0";
+    formClone2.style.top = "0";
+    formClone1.style.left = "0";
+    formClone2.style.left = "0";
+    formClone1.style.width = "100%";
+    formClone2.style.width = "100%";
+    formClone1.style.pointerEvents = "none";
+    formClone2.style.pointerEvents = "none";
+    formClone1.style.zIndex = "100";
+    formClone2.style.zIndex = "99";
+    formClone1.classList.add("glitch-clone");
+    formClone2.classList.add("glitch-clone");
+    
+    container.appendChild(formClone1);
+    container.appendChild(formClone2);
+
+    // Master timeline
+    const masterTl = gsap.timeline({
+      onComplete: () => {
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+          const reverseTl = gsap.timeline({
+            onComplete: () => {
+              reply.classList.remove("is-visible");
+              form.classList.remove("is-hidden");
+              
+              // Reset for next time
+              gsap.set([form, reply, replyIcon, replyTitle, replyText], {
+                clearProps: "all",
+              });
+              
+              if (onComplete) onComplete();
+            },
+          });
+
+          // Reverse animation
+          reverseTl
+            .to(replyText, {
+              opacity: 0,
+              y: 20,
+              duration: 0.3,
+            })
+            .to(replyTitle, {
+              opacity: 0,
+              scale: 0.5,
+              duration: 0.3,
+            }, "-=0.2")
+            .to(replyIcon, {
+              scale: 0,
+              rotation: -180,
+              duration: 0.4,
+            }, "-=0.2")
+            .to(reply, {
+              opacity: 0,
+              duration: 0.3,
+            })
+            .to(form, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.5,
+              onComplete: () => {
+                // Reset container styles
+                container.style.height = "";
+                container.style.overflow = "";
+              }
+            });
+        }, 5000);
+      },
+    });
+
+    // GLITCH OUT EFFECT - Form disappears with RGB split
+    masterTl
+      // Initial glitch flashes
+      .to(formClone1, {
+        opacity: 1,
+        x: -5,
+        filter: "hue-rotate(90deg)",
+        duration: 0.05,
+      })
+      .to(formClone2, {
+        opacity: 1,
+        x: 5,
+        filter: "hue-rotate(-90deg)",
+        duration: 0.05,
+      }, "<")
+      .to([formClone1, formClone2], {
+        opacity: 0,
+        duration: 0.05,
+      })
+      // Second glitch
+      .to(formClone1, {
+        opacity: 0.8,
+        x: 8,
+        duration: 0.05,
+      })
+      .to(formClone2, {
+        opacity: 0.8,
+        x: -8,
+        duration: 0.05,
+      }, "<")
+      .to([formClone1, formClone2], {
+        opacity: 0,
+        duration: 0.05,
+      })
+      // Final big glitch with form destruction
+      .to(form, {
+        opacity: 0.5,
+        scaleY: 0.95,
+        scaleX: 1.02,
+        duration: 0.1,
+      })
+      .to(formClone1, {
+        opacity: 1,
+        x: -15,
+        scaleX: 0.98,
+        filter: "hue-rotate(180deg) brightness(1.5)",
+        duration: 0.1,
+      })
+      .to(formClone2, {
+        opacity: 1,
+        x: 15,
+        scaleX: 1.02,
+        filter: "hue-rotate(-180deg) brightness(1.5)",
+        duration: 0.1,
+      }, "<")
+      // Shatter effect
+      .to([form, formClone1, formClone2], {
+        opacity: 0,
+        scale: 0.8,
+        filter: "blur(10px)",
+        duration: 0.2,
+        onComplete: () => {
+          formClone1.remove();
+          formClone2.remove();
+          form.classList.add("is-hidden");
+        },
+      })
+      // Brief pause
+      .to({}, { duration: 0.2 })
+      // Show reply container
+      .call(() => {
+        reply.classList.add("is-visible");
+      })
+      // Digital scan reveal
+      .fromTo(
+        reply,
+        {
+          opacity: 0,
+          clipPath: "polygon(0 50%, 100% 50%, 100% 50%, 0 50%)",
+        },
+        {
+          opacity: 1,
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+          duration: 0.6,
+          ease: "power2.inOut",
+        }
+      )
+      // Icon explosion with particles effect
+      .fromTo(
+        replyIcon,
+        {
+          scale: 0,
+          rotation: -360,
+          opacity: 0,
+          filter: "blur(20px) brightness(2)",
+        },
+        {
+          scale: 1,
+          rotation: 0,
+          opacity: 1,
+          filter: "blur(0px) brightness(1)",
+          duration: 0.8,
+          ease: "elastic.out(1, 0.6)",
+        },
+        "-=0.3"
+      )
+      // Icon glow pulse
+      .to(
+        replyIcon,
+        {
+          filter: "drop-shadow(0 0 20px currentColor) brightness(1.5)",
+          scale: 1.15,
+          duration: 0.2,
+          yoyo: true,
+          repeat: 1,
+        },
+        "-=0.3"
+      )
+      // Title with RGB glitch effect
+      .fromTo(
+        replyTitle,
+        {
+          opacity: 0,
+          y: -20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        },
+        "-=0.4"
+      )
+      // RGB split glitch on title
+      .to(replyTitle, {
+        textShadow: "-3px 0 red, 3px 0 cyan",
+        x: 2,
+        duration: 0.05,
+        repeat: 5,
+        yoyo: true,
+        onComplete: () => {
+          gsap.set(replyTitle, { textShadow: "0 0 20px rgba(255,255,255,0.3)" });
+        },
+      })
+      // Text reveal with typewriter effect
+      .fromTo(
+        replyText,
+        {
+          opacity: 0,
+          y: 30,
+          filter: "blur(10px)",
+        },
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.3"
+      )
+      // Final emphasis
+      .to([replyIcon, replyTitle], {
+        scale: 1.05,
+        duration: 0.15,
+        yoyo: true,
+        repeat: 1,
+      });
+  }
+
   async function submitContactForm(event) {
     event.preventDefault();
 
@@ -420,14 +694,14 @@ $(function () {
       const result = await response.json();
 
       if (response.ok) {
-        // Success
-        $(".contact").find(".form").addClass("is-hidden");
-        $(".contact").find(".form__reply").addClass("is-visible");
-        setTimeout(function () {
-          $(".contact").find(".form__reply").removeClass("is-visible");
-          $(".contact").find(".form").delay(300).removeClass("is-hidden");
+        // Success - Show developer-style animation
+        const form = document.querySelector(".contact .form");
+        const reply = document.querySelector(".contact .form__reply");
+        
+        showSuccessAnimation(form, reply, () => {
+          // Reset form after animation completes
           event.target.reset();
-
+          
           // Re-enable button and restore original state
           submitBtn.disabled = false;
           submitBtn.style.opacity = "1";
@@ -435,7 +709,7 @@ $(function () {
           btnCaption.textContent = originalCaption;
           btnIcon.className = originalIconClass;
           btnIcon.style.display = "";
-        }, 5000);
+        });
       } else {
         // Error - restore button state
         submitBtn.disabled = false;

@@ -1,26 +1,41 @@
 # Website Speed Optimization Report
 
 ## Overview
+
 This document outlines all the speed optimizations implemented on the portfolio website without affecting UI/UX.
 
 ## Optimizations Implemented
 
 ### 1. CSS Loading Optimization
+
 **Impact: High**
+
 - **Changed**: CSS files (`plugins.css` and `main.css`) loading strategy
 - **Method**: Converted blocking CSS to preload with media print technique
 - **Implementation**:
   ```html
-  <link rel="preload" as="style" href="css/plugins.css" onload="this.onload=null;this.rel='stylesheet'" />
-  <link rel="preload" as="style" href="css/main.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <link
+    rel="preload"
+    as="style"
+    href="css/plugins.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <link
+    rel="preload"
+    as="style"
+    href="css/main.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
   ```
-- **Benefits**: 
+- **Benefits**:
   - Non-blocking CSS loading for faster First Contentful Paint (FCP)
   - Loader CSS remains critical for immediate rendering
   - Fallback with `<noscript>` tags for non-JS users
 
 ### 2. JavaScript Optimization
+
 **Impact: High**
+
 - **Added `defer`** to all local JavaScript files:
   - `js/libs.min.js`
   - `js/app.js`
@@ -35,7 +50,9 @@ This document outlines all the speed optimizations implemented on the portfolio 
   - Reduced parse time for inline scripts
 
 ### 3. Resource Hints & Preconnections
+
 **Impact: Medium**
+
 - **Added preconnect** for external domains:
   ```html
   <link rel="preconnect" href="https://www.google.com" crossorigin />
@@ -47,7 +64,9 @@ This document outlines all the speed optimizations implemented on the portfolio 
   - Reduced latency for external resources
 
 ### 4. Image Loading Optimization
+
 **Impact: High**
+
 - **Added `loading="lazy"`** to all below-the-fold images:
   - Portfolio gallery images (4 items)
   - Service section images (4 items)
@@ -65,18 +84,19 @@ This document outlines all the speed optimizations implemented on the portfolio 
 
 ### Before → After Expectations
 
-| Metric | Estimated Improvement |
-|--------|----------------------|
-| **First Contentful Paint (FCP)** | 15-25% faster |
-| **Largest Contentful Paint (LCP)** | 20-30% faster |
-| **Time to Interactive (TTI)** | 25-35% faster |
-| **Total Blocking Time (TBT)** | 30-40% reduction |
-| **Page Load Time** | 20-30% faster |
-| **Initial Page Weight** | 40-50% reduction |
+| Metric                             | Estimated Improvement |
+| ---------------------------------- | --------------------- |
+| **First Contentful Paint (FCP)**   | 15-25% faster         |
+| **Largest Contentful Paint (LCP)** | 20-30% faster         |
+| **Time to Interactive (TTI)**      | 25-35% faster         |
+| **Total Blocking Time (TBT)**      | 30-40% reduction      |
+| **Page Load Time**                 | 20-30% faster         |
+| **Initial Page Weight**            | 40-50% reduction      |
 
 ## Technical Details
 
 ### Scripts Optimization Summary
+
 ```javascript
 // Before: Blocking
 <script src="js/libs.min.js"></script>
@@ -86,16 +106,23 @@ This document outlines all the speed optimizations implemented on the portfolio 
 ```
 
 ### CSS Optimization Summary
+
 ```html
 <!-- Before: Render-blocking -->
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 
 <!-- After: Non-blocking with preload -->
-<link rel="preload" as="style" href="css/main.css" onload="this.onload=null;this.rel='stylesheet'" />
+<link
+  rel="preload"
+  as="style"
+  href="css/main.css"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
 <noscript><link rel="stylesheet" href="css/main.css" /></noscript>
 ```
 
 ### Image Optimization Summary
+
 ```html
 <!-- Before: Eager loading -->
 <img src="img/icons/icon-nodejs.svg" alt="Node.js" />
@@ -107,13 +134,15 @@ This document outlines all the speed optimizations implemented on the portfolio 
 ## Browser Compatibility
 
 All optimizations are compatible with:
+
 - ✅ Chrome 77+ (loading="lazy")
 - ✅ Firefox 75+ (loading="lazy")
 - ✅ Safari 15.4+ (loading="lazy")
 - ✅ Edge 79+ (loading="lazy")
 - ✅ All modern browsers (defer, async, preload, fetchpriority)
 
-**Fallbacks**: 
+**Fallbacks**:
+
 - `<noscript>` tags for CSS ensure styling without JavaScript
 - Older browsers will load images immediately (graceful degradation)
 
@@ -139,6 +168,7 @@ All optimizations are compatible with:
 ## Additional Optimization Opportunities (Future)
 
 ### Not Implemented (Requires Testing)
+
 1. **Image Format Optimization**: Convert images to WebP/AVIF
 2. **Font Optimization**: Use font-display: swap
 3. **Service Worker**: Implement caching strategy
@@ -160,6 +190,7 @@ All optimizations are compatible with:
 ## Maintenance
 
 These optimizations require no ongoing maintenance but should be applied to:
+
 - New images added to the site
 - New external scripts/resources
 - Additional CSS files
