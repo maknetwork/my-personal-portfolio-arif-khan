@@ -382,8 +382,8 @@ $(function () {
     }
 
     // Get the button container and disable animations
-    const btnContainer = submitBtn.closest('.form__item');
-    
+    const btnContainer = submitBtn.closest(".form__item");
+
     // Disable button and show loading state
     submitBtn.disabled = true;
     submitBtn.style.opacity = "0.7";
@@ -391,7 +391,7 @@ $(function () {
     btnCaption.textContent = "Sending...";
     btnIcon.className = "ph-bold ph-circle-notch btn-loading-icon";
     btnIcon.style.display = "inline-block";
-    
+
     // Lock the container position to prevent scroll animation interference
     if (btnContainer) {
       btnContainer.style.transform = "none";
