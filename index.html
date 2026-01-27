@@ -44,6 +44,8 @@
     <!-- DNS Prefetch & Preconnect for Performance -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://www.google.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
     <!-- Facebook Metadata Start -->
     <meta property="og:type" content="website" />
@@ -90,14 +92,33 @@
     <!-- Robots Meta -->
     <meta
       name="robots"
+      `
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
     <meta name="googlebot" content="index, follow" />
 
     <!-- Template Styles Start -->
     <link rel="stylesheet" href="css/loaders/loader.css" />
-    <link rel="stylesheet" type="text/css" href="css/plugins.css" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link
+      rel="preload"
+      as="style"
+      href="css/plugins.css"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript><link rel="stylesheet" href="css/plugins.css" /></noscript>
+    <link
+      rel="preload"
+      as="style"
+      href="css/main.css"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript><link rel="stylesheet" href="css/main.css" /></noscript>
     <!-- Template Styles End -->
 
     <!-- Custom Browser Color Start -->
@@ -266,7 +287,10 @@
     <!-- Structured Data - JSON-LD Schema.org Markup End -->
 
     <!-- reCAPTCHA v3 Script -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lcfs1csAAAAALnh7gLTMQ_z1NxfVzfKtGMeTwIv"></script>
+    <script
+      async
+      src="https://www.google.com/recaptcha/api.js?render=6Lcfs1csAAAAALnh7gLTMQ_z1NxfVzfKtGMeTwIv"
+    ></script>
   </head>
 
   <body>
@@ -403,6 +427,7 @@
             <img
               src="img/avatars/myphoto.png"
               alt="Mohd Arif Khan - Full Stack Software Engineer"
+              fetchpriority="high"
             />
           </div>
         </div>
@@ -624,6 +649,7 @@
                       class="gallery__image"
                       itemprop="thumbnail"
                       alt="Vurve.ai Project"
+                      loading="lazy"
                     />
                   </a>
                   <figcaption
@@ -707,6 +733,7 @@
                       class="gallery__image"
                       itemprop="thumbnail"
                       alt="Field Service Platform"
+                      loading="lazy"
                     />
                   </a>
                   <figcaption
@@ -747,6 +774,7 @@
                       class="gallery__image"
                       itemprop="thumbnail"
                       alt="Enterprise Solutions"
+                      loading="lazy"
                     />
                   </a>
                   <figcaption
@@ -946,8 +974,9 @@
                     </div>
                     <div class="cards__image d-flex animate-in-up">
                       <img
-                        src="img/services/backend.jpg"
+                        src="img/services/backend1.png"
                         alt="Backend Development"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -974,8 +1003,9 @@
                     </div>
                     <div class="cards__image d-flex animate-in-up">
                       <img
-                        src="https://dummyimage.com/1200x900/4d4d4d/636363"
+                        src="img/services/frontend1.png"
                         alt="Database Solutions"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -1002,8 +1032,9 @@
                     </div>
                     <div class="cards__image d-flex">
                       <img
-                        src="img/services/cloud.jpg"
+                        src="img/services/devops1.png"
                         alt="Cloud Infrastructure"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -1031,7 +1062,11 @@
                       </p>
                     </div>
                     <div class="cards__image d-flex animate-in-up">
-                      <img src="img/services/testing.jpg" alt="Testing & QA" />
+                      <img
+                        src="img/services/testing1.png"
+                        alt="Testing & QA"
+                        loading="lazy"
+                      />
                     </div>
                   </div>
                 </div>
@@ -1287,6 +1322,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-nodejs.svg"
                     alt="Node.js"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">Node.js</h6>
                 </div>
@@ -1298,6 +1334,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-python.svg"
                     alt="Python"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">Python</h6>
                 </div>
@@ -1309,6 +1346,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-react.svg"
                     alt="React"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">React</h6>
                 </div>
@@ -1320,6 +1358,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-mongodb.svg"
                     alt="MongoDB"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">MongoDB</h6>
                 </div>
@@ -1331,6 +1370,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-postgresql.svg"
                     alt="PostgreSQL"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">PostgreSQL</h6>
                 </div>
@@ -1342,6 +1382,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-redis.svg"
                     alt="Redis"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">Redis</h6>
                 </div>
@@ -1353,6 +1394,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-docker.svg"
                     alt="Docker"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">Docker</h6>
                 </div>
@@ -1364,6 +1406,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-aws.svg"
                     alt="AWS"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">AWS</h6>
                 </div>
@@ -1375,6 +1418,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-expressjs.svg"
                     alt="Express.js"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">Express.js</h6>
                 </div>
@@ -1386,6 +1430,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-fastapi.svg"
                     alt="FastAPI"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">FastAPI</h6>
                 </div>
@@ -1397,6 +1442,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-typescript.svg"
                     alt="TypeScript"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">TypeScript</h6>
                 </div>
@@ -1408,6 +1454,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-graphql.svg"
                     alt="GraphQL"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">GraphQL</h6>
                 </div>
@@ -1419,6 +1466,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-jest.svg"
                     alt="Jest"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">Jest</h6>
                 </div>
@@ -1430,6 +1478,7 @@
                     class="tools-cards__icon animate-in-up"
                     src="img/icons/icon-nextjs.svg"
                     alt="Next.js"
+                    loading="lazy"
                   />
                   <h6 class="tools-cards__caption animate-in-up">Next.js</h6>
                 </div>
@@ -1482,6 +1531,7 @@
                           <img
                             src="https://dummyimage.com/400x400/4d4d4d/636363"
                             alt="Client Review"
+                            loading="lazy"
                           />
                         </div>
                         <div
@@ -1523,6 +1573,7 @@
                           <img
                             src="https://dummyimage.com/400x400/4d4d4d/636363"
                             alt="Client Review"
+                            loading="lazy"
                           />
                         </div>
                         <div
@@ -1893,50 +1944,43 @@
     </div>
 
     <!-- Load Scripts Start -->
-    <script src="js/libs.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
+    <script defer src="js/libs.min.js"></script>
+    <script
+      async
+      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+    <script defer>
       gsap.registerPlugin(ScrollTrigger);
-
-      const content = document.querySelector("body");
-      const imgLoad = imagesLoaded(content);
-      const svgBackground = document.querySelector("svg-background");
-
-      imgLoad.on("done", (instance) => {
-        document.getElementById("loaderContent").classList.add("fade-out");
-        setTimeout(() => {
-          document.getElementById("loader").classList.add("loaded");
-        }, 300);
-
-        gsap.set(".animate-headline", { y: 50, opacity: 0 });
-        ScrollTrigger.batch(".animate-headline", {
-          interval: 0.1,
-          batchMax: 4,
-          duration: 6,
-          onEnter: (batch) =>
-            gsap.to(batch, {
-              opacity: 1,
-              y: 0,
-              ease: "sine",
-              stagger: { each: 0.15, grid: [1, 4] },
-              overwrite: true,
-            }),
-          onLeave: (batch) =>
-            gsap.set(batch, { opacity: 1, y: 0, overwrite: true }),
-          onEnterBack: (batch) =>
-            gsap.to(batch, {
-              opacity: 1,
-              y: 0,
-              stagger: 0.15,
-              overwrite: true,
-            }),
-          onLeaveBack: (batch) =>
-            gsap.set(batch, { opacity: 0, y: 50, overwrite: true }),
-        });
+      const content = document.querySelector("body"),
+        imgLoad = imagesLoaded(content);
+      imgLoad.on("done", (e) => {
+        (document.getElementById("loaderContent").classList.add("fade-out"),
+          setTimeout(() => {
+            document.getElementById("loader").classList.add("loaded");
+          }, 300),
+          gsap.set(".animate-headline", { y: 50, opacity: 0 }),
+          ScrollTrigger.batch(".animate-headline", {
+            interval: 0.1,
+            batchMax: 4,
+            duration: 6,
+            onEnter: (e) =>
+              gsap.to(e, {
+                opacity: 1,
+                y: 0,
+                ease: "sine",
+                stagger: { each: 0.15, grid: [1, 4] },
+                overwrite: !0,
+              }),
+            onLeave: (e) => gsap.set(e, { opacity: 1, y: 0, overwrite: !0 }),
+            onEnterBack: (e) =>
+              gsap.to(e, { opacity: 1, y: 0, stagger: 0.15, overwrite: !0 }),
+            onLeaveBack: (e) =>
+              gsap.set(e, { opacity: 0, y: 50, overwrite: !0 }),
+          }));
       });
     </script>
-    <script src="js/app.js"></script>
-    <script src="js/gallery-init.js"></script>
+    <script defer src="js/app.js"></script>
+    <script defer src="js/gallery-init.js"></script>
     <!-- Load Scripts End -->
   </body>
 </html>
