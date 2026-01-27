@@ -381,13 +381,22 @@ $(function () {
       return;
     }
 
+    // Get the button container and disable animations
+    const btnContainer = submitBtn.closest('.form__item');
+    
     // Disable button and show loading state
     submitBtn.disabled = true;
     submitBtn.style.opacity = "0.7";
     submitBtn.style.cursor = "not-allowed";
     btnCaption.textContent = "Sending...";
-    btnIcon.className = "ph-bold ph-circle-notch";
-    btnIcon.style.animation = "spin 1s linear infinite";
+    btnIcon.className = "ph-bold ph-circle-notch btn-loading-icon";
+    btnIcon.style.display = "inline-block";
+    
+    // Lock the container position to prevent scroll animation interference
+    if (btnContainer) {
+      btnContainer.style.transform = "none";
+      btnContainer.style.opacity = "1";
+    }
 
     try {
       // Generate reCAPTCHA token
@@ -418,14 +427,14 @@ $(function () {
           $(".contact").find(".form__reply").removeClass("is-visible");
           $(".contact").find(".form").delay(300).removeClass("is-hidden");
           event.target.reset();
-          
+
           // Re-enable button and restore original state
           submitBtn.disabled = false;
           submitBtn.style.opacity = "1";
           submitBtn.style.cursor = "pointer";
           btnCaption.textContent = originalCaption;
           btnIcon.className = originalIconClass;
-          btnIcon.style.animation = "";
+          btnIcon.style.display = "";
         }, 5000);
       } else {
         // Error - restore button state
@@ -434,7 +443,7 @@ $(function () {
         submitBtn.style.cursor = "pointer";
         btnCaption.textContent = originalCaption;
         btnIcon.className = originalIconClass;
-        btnIcon.style.animation = "";
+        btnIcon.style.display = "";
         alert(`Error: ${result.error}`);
       }
     } catch (error) {
@@ -444,7 +453,7 @@ $(function () {
       submitBtn.style.cursor = "pointer";
       btnCaption.textContent = originalCaption;
       btnIcon.className = originalIconClass;
-      btnIcon.style.animation = "";
+      btnIcon.style.display = "";
       console.error("Request failed:", error);
       alert("An error occurred. Please try again.");
     }

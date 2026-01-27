@@ -633,6 +633,23 @@ img {
   }
 }
 
+/* Button loading spinner */
+.btn-loading-icon {
+  animation: spin 1s linear infinite !important;
+  -webkit-animation: spin 1s linear infinite !important;
+  -moz-animation: spin 1s linear infinite !important;
+}
+
+/* Prevent layout shift during button loading state */
+.btn i {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn:disabled {
+  pointer-events: none;
+}
+
 /* ------------------------------------------------*/
 /* Elements - Typography Start */
 /* ------------------------------------------------*/
