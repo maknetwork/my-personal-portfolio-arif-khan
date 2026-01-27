@@ -345,46 +345,65 @@ $(function () {
   // Contact Form Start
   // --------------------------------------------- //
   // Replace with your actual keys
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtyYW5ldHZsZ2h0cXZ1dWtybnB5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk0MzE0MDgsImV4cCI6MjA4NTAwNzQwOH0.jefNTR-3P2WaoR4-1FQiixoUOQdJUcRX27nqJy2cxyE";
-  const RECAPTCHA_SITE_KEY = '6Lcfs1csAAAAALnh7gLTMQ_z1NxfVzfKtGMeTwIv';  // From Google reCAPTCHA console
-  const FUNCTION_URL = 'https://kranetvlghtqvuukrnpy.supabase.co/functions/v1/submit-contact-form';
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtyYW5ldHZsZ2h0cXZ1dWtybnB5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk0MzE0MDgsImV4cCI6MjA4NTAwNzQwOH0.jefNTR-3P2WaoR4-1FQiixoUOQdJUcRX27nqJy2cxyE";
+  const RECAPTCHA_SITE_KEY = "6Lcfs1csAAAAALnh7gLTMQ_z1NxfVzfKtGMeTwIv"; // From Google reCAPTCHA console
+  const FUNCTION_URL =
+    "https://kranetvlghtqvuukrnpy.supabase.co/functions/v1/submit-contact-form";
 
   async function submitContactForm(event) {
     event.preventDefault();
 
+    // Get submit button and store original content
+    const submitBtn = event.target.querySelector('button[type="submit"]');
+    const btnCaption = submitBtn.querySelector(".btn-caption");
+    const btnIcon = submitBtn.querySelector("i");
+    const originalCaption = btnCaption.textContent;
+    const originalIconClass = btnIcon.className;
+
     // Get form data
     const formData = {
-      name: document.getElementById('name').value.trim(),
-      company: document.getElementById('company').value.trim() || undefined,
-      email: document.getElementById('email').value.trim(),
-      phone: document.getElementById('phone').value.trim() || undefined,
-      message: document.getElementById('message').value.trim(),
+      name: document.getElementById("name").value.trim(),
+      company: document.getElementById("company").value.trim() || undefined,
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim() || undefined,
+      message: document.getElementById("message").value.trim(),
     };
 
     // Basic validation (same as before)
     if (!formData.name || !formData.email || !formData.message) {
-      alert('Name, email, and message are required.');
+      alert("Name, email, and message are required.");
       return;
     }
     const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     if (!emailRegex.test(formData.email)) {
-      alert('Invalid email format.');
+      alert("Invalid email format.");
       return;
     }
 
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.7";
+    submitBtn.style.cursor = "not-allowed";
+    btnCaption.textContent = "Sending...";
+    btnIcon.className = "ph-bold ph-circle-notch";
+    btnIcon.style.animation = "spin 1s linear infinite";
+
     try {
       // Generate reCAPTCHA token
-      const recaptchaToken = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' });
+      const recaptchaToken = await grecaptcha.execute(RECAPTCHA_SITE_KEY, {
+        action: "submit",
+      });
 
       // Add token to form data
       formData.recaptcha_token = recaptchaToken;
 
       // Make the request
       const response = await fetch(FUNCTION_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-          'Content-Type': 'application/json',
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -399,18 +418,42 @@ $(function () {
           $(".contact").find(".form__reply").removeClass("is-visible");
           $(".contact").find(".form").delay(300).removeClass("is-hidden");
           event.target.reset();
+          
+          // Re-enable button and restore original state
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
+          submitBtn.style.cursor = "pointer";
+          btnCaption.textContent = originalCaption;
+          btnIcon.className = originalIconClass;
+          btnIcon.style.animation = "";
         }, 5000);
       } else {
+        // Error - restore button state
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = "1";
+        submitBtn.style.cursor = "pointer";
+        btnCaption.textContent = originalCaption;
+        btnIcon.className = originalIconClass;
+        btnIcon.style.animation = "";
         alert(`Error: ${result.error}`);
       }
     } catch (error) {
-      console.error('Request failed:', error);
-      alert('An error occurred. Please try again.');
+      // Error - restore button state
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = "1";
+      submitBtn.style.cursor = "pointer";
+      btnCaption.textContent = originalCaption;
+      btnIcon.className = originalIconClass;
+      btnIcon.style.animation = "";
+      console.error("Request failed:", error);
+      alert("An error occurred. Please try again.");
     }
   }
 
   // Attach to form
-  document.getElementById('contact-form').addEventListener('submit', submitContactForm);
+  document
+    .getElementById("contact-form")
+    .addEventListener("submit", submitContactForm);
   // --------------------------------------------- //
   // Contact Form End
   // --------------------------------------------- //
