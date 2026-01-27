@@ -2001,57 +2001,66 @@
     <script>
       // Initialize minimalist Vanta.js effect only in hero section
       let vantaEffect;
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          if (typeof VANTA !== 'undefined' && VANTA.DOTS) {
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          if (typeof VANTA !== "undefined" && VANTA.DOTS) {
             // Get theme from body class or default to dark
-            const isDarkMode = document.body.classList.contains('dark-mode') || 
-                              window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
+            const isDarkMode =
+              document.body.classList.contains("dark-mode") ||
+              window.matchMedia("(prefers-color-scheme: dark)").matches;
+
             vantaEffect = VANTA.DOTS({
               el: ".main.intro",
               mouseControls: true,
               touchControls: true,
               gyroControls: false,
-              minHeight: 200.00,
-              minWidth: 200.00,
-              scale: 1.00,
-              scaleMobile: 1.00,
+              minHeight: 200.0,
+              minWidth: 200.0,
+              scale: 1.0,
+              scaleMobile: 1.0,
               color: 0xff8c42,
               color2: 0xff6b35,
               backgroundColor: isDarkMode ? 0x111111 : 0xe6ebf4,
-              size: 3.00,
-              spacing: 35.00,
-              showLines: false
+              size: 3.0,
+              spacing: 35.0,
+              showLines: false,
             });
-            
+
             // Subtle changes on scroll within hero section
-            window.addEventListener('scroll', function() {
-              if (vantaEffect) {
-                const heroSection = document.querySelector('.main.intro');
-                if (heroSection) {
-                  const heroRect = heroSection.getBoundingClientRect();
-                  const heroVisible = heroRect.bottom > 0 && heroRect.top < window.innerHeight;
-                  
-                  if (heroVisible) {
-                    const scrollPercent = Math.max(0, Math.min(1, 1 - (heroRect.bottom / window.innerHeight)));
-                    vantaEffect.setOptions({
-                      size: 3.00 + (scrollPercent * 2),
-                      spacing: 35.00 - (scrollPercent * 10)
-                    });
+            window.addEventListener(
+              "scroll",
+              function () {
+                if (vantaEffect) {
+                  const heroSection = document.querySelector(".main.intro");
+                  if (heroSection) {
+                    const heroRect = heroSection.getBoundingClientRect();
+                    const heroVisible =
+                      heroRect.bottom > 0 && heroRect.top < window.innerHeight;
+
+                    if (heroVisible) {
+                      const scrollPercent = Math.max(
+                        0,
+                        Math.min(1, 1 - heroRect.bottom / window.innerHeight),
+                      );
+                      vantaEffect.setOptions({
+                        size: 3.0 + scrollPercent * 2,
+                        spacing: 35.0 - scrollPercent * 10,
+                      });
+                    }
                   }
                 }
-              }
-            }, { passive: true });
-            
+              },
+              { passive: true },
+            );
+
             // Update background color on theme change
-            const observer = new MutationObserver(function(mutations) {
-              mutations.forEach(function(mutation) {
-                if (mutation.attributeName === 'class') {
-                  const isDark = document.body.classList.contains('dark-mode');
+            const observer = new MutationObserver(function (mutations) {
+              mutations.forEach(function (mutation) {
+                if (mutation.attributeName === "class") {
+                  const isDark = document.body.classList.contains("dark-mode");
                   if (vantaEffect) {
                     vantaEffect.setOptions({
-                      backgroundColor: isDark ? 0x111111 : 0xe6ebf4
+                      backgroundColor: isDark ? 0x111111 : 0xe6ebf4,
                     });
                   }
                 }

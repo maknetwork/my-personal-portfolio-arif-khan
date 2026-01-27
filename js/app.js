@@ -352,15 +352,15 @@ $(function () {
     "https://kranetvlghtqvuukrnpy.supabase.co/functions/v1/submit-contact-form";
 
   // TEST MODE - Function to preview success animation
-  window.testSuccessAnimation = function() {
+  window.testSuccessAnimation = function () {
     const form = document.querySelector(".contact .form");
     const reply = document.querySelector(".contact .form__reply");
-    
+
     if (!form || !reply) {
       console.error("Form elements not found");
       return;
     }
-    
+
     // Trigger the success animation
     showSuccessAnimation(form, reply, () => {
       console.log("Test animation complete");
@@ -376,7 +376,7 @@ $(function () {
 
     // Measure form height before hiding
     const formHeight = form.offsetHeight;
-    
+
     // Set container to exact form height to prevent shifting
     container.style.height = formHeight + "px";
     container.style.overflow = "hidden";
@@ -398,7 +398,7 @@ $(function () {
     formClone2.style.zIndex = "99";
     formClone1.classList.add("glitch-clone");
     formClone2.classList.add("glitch-clone");
-    
+
     container.appendChild(formClone1);
     container.appendChild(formClone2);
 
@@ -411,12 +411,12 @@ $(function () {
             onComplete: () => {
               reply.classList.remove("is-visible");
               form.classList.remove("is-hidden");
-              
+
               // Reset for next time
               gsap.set([form, reply, replyIcon, replyTitle, replyText], {
                 clearProps: "all",
               });
-              
+
               if (onComplete) onComplete();
             },
           });
@@ -428,16 +428,24 @@ $(function () {
               y: 20,
               duration: 0.3,
             })
-            .to(replyTitle, {
-              opacity: 0,
-              scale: 0.5,
-              duration: 0.3,
-            }, "-=0.2")
-            .to(replyIcon, {
-              scale: 0,
-              rotation: -180,
-              duration: 0.4,
-            }, "-=0.2")
+            .to(
+              replyTitle,
+              {
+                opacity: 0,
+                scale: 0.5,
+                duration: 0.3,
+              },
+              "-=0.2",
+            )
+            .to(
+              replyIcon,
+              {
+                scale: 0,
+                rotation: -180,
+                duration: 0.4,
+              },
+              "-=0.2",
+            )
             .to(reply, {
               opacity: 0,
               duration: 0.3,
@@ -450,7 +458,7 @@ $(function () {
                 // Reset container styles
                 container.style.height = "";
                 container.style.overflow = "";
-              }
+              },
             });
         }, 5000);
       },
@@ -465,12 +473,16 @@ $(function () {
         filter: "hue-rotate(90deg)",
         duration: 0.05,
       })
-      .to(formClone2, {
-        opacity: 1,
-        x: 5,
-        filter: "hue-rotate(-90deg)",
-        duration: 0.05,
-      }, "<")
+      .to(
+        formClone2,
+        {
+          opacity: 1,
+          x: 5,
+          filter: "hue-rotate(-90deg)",
+          duration: 0.05,
+        },
+        "<",
+      )
       .to([formClone1, formClone2], {
         opacity: 0,
         duration: 0.05,
@@ -481,11 +493,15 @@ $(function () {
         x: 8,
         duration: 0.05,
       })
-      .to(formClone2, {
-        opacity: 0.8,
-        x: -8,
-        duration: 0.05,
-      }, "<")
+      .to(
+        formClone2,
+        {
+          opacity: 0.8,
+          x: -8,
+          duration: 0.05,
+        },
+        "<",
+      )
       .to([formClone1, formClone2], {
         opacity: 0,
         duration: 0.05,
@@ -504,13 +520,17 @@ $(function () {
         filter: "hue-rotate(180deg) brightness(1.5)",
         duration: 0.1,
       })
-      .to(formClone2, {
-        opacity: 1,
-        x: 15,
-        scaleX: 1.02,
-        filter: "hue-rotate(-180deg) brightness(1.5)",
-        duration: 0.1,
-      }, "<")
+      .to(
+        formClone2,
+        {
+          opacity: 1,
+          x: 15,
+          scaleX: 1.02,
+          filter: "hue-rotate(-180deg) brightness(1.5)",
+          duration: 0.1,
+        },
+        "<",
+      )
       // Shatter effect
       .to([form, formClone1, formClone2], {
         opacity: 0,
@@ -541,7 +561,7 @@ $(function () {
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           duration: 0.6,
           ease: "power2.inOut",
-        }
+        },
       )
       // Icon explosion with particles effect
       .fromTo(
@@ -560,7 +580,7 @@ $(function () {
           duration: 0.8,
           ease: "elastic.out(1, 0.6)",
         },
-        "-=0.3"
+        "-=0.3",
       )
       // Icon glow pulse
       .to(
@@ -572,7 +592,7 @@ $(function () {
           yoyo: true,
           repeat: 1,
         },
-        "-=0.3"
+        "-=0.3",
       )
       // Title with RGB glitch effect
       .fromTo(
@@ -586,7 +606,7 @@ $(function () {
           y: 0,
           duration: 0.3,
         },
-        "-=0.4"
+        "-=0.4",
       )
       // RGB split glitch on title
       .to(replyTitle, {
@@ -596,7 +616,9 @@ $(function () {
         repeat: 5,
         yoyo: true,
         onComplete: () => {
-          gsap.set(replyTitle, { textShadow: "0 0 20px rgba(255,255,255,0.3)" });
+          gsap.set(replyTitle, {
+            textShadow: "0 0 20px rgba(255,255,255,0.3)",
+          });
         },
       })
       // Text reveal with typewriter effect
@@ -614,7 +636,7 @@ $(function () {
           duration: 0.6,
           ease: "power2.out",
         },
-        "-=0.3"
+        "-=0.3",
       )
       // Final emphasis
       .to([replyIcon, replyTitle], {
@@ -697,11 +719,11 @@ $(function () {
         // Success - Show developer-style animation
         const form = document.querySelector(".contact .form");
         const reply = document.querySelector(".contact .form__reply");
-        
+
         showSuccessAnimation(form, reply, () => {
           // Reset form after animation completes
           event.target.reset();
-          
+
           // Re-enable button and restore original state
           submitBtn.disabled = false;
           submitBtn.style.opacity = "1";

@@ -2637,7 +2637,7 @@ form textarea:required:valid {
 }
 
 .form__reply.is-visible::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -2667,7 +2667,8 @@ form textarea:required:valid {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.5;
   }
   50% {
