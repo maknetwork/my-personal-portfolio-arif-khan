@@ -982,9 +982,6 @@
                         <span class="rounded-tag tag-outline">Node.js</span>
                         <span class="rounded-tag tag-outline">Python</span>
                         <span class="rounded-tag tag-outline">REST APIs</span>
-                        <span class="rounded-tag tag-outline"
-                          >Microservices</span
-                        >
                       </div>
                       <p class="small cards__text animate-in-up">
                         Building scalable backend systems with Node.js, Python,
@@ -1006,21 +1003,23 @@
                   <div class="cards__card d-flex flex-column">
                     <div class="cards__descr">
                       <h4 class="cards__title animate-in-up">
-                        Database & Caching Solutions
+                        Frontend Development
                       </h4>
                       <div class="cards__tags d-flex flex-wrap animate-in-up">
-                        <span class="rounded-tag tag-outline">MongoDB</span>
-                        <span class="rounded-tag tag-outline">PostgreSQL</span>
-                        <span class="rounded-tag tag-outline">Redis</span>
+                        <span class="rounded-tag tag-outline">React</span>
+                        <span class="rounded-tag tag-outline">Next.js</span>
+                        <span class="rounded-tag tag-outline">JavaScript</span>
+                        <span class="rounded-tag tag-outline">HTML/CSS</span>
                       </div>
                       <p class="small cards__text animate-in-up">
-                        Proficient in MongoDB, PostgreSQL, Redis caching,
+                        Experienced in building responsive web applications with
+                        React, Next.js, and modern JavaScript
                       </p>
                     </div>
                     <div class="cards__image d-flex animate-in-up">
                       <img
                         src="img/services/frontend1.png"
-                        alt="Database Solutions"
+                        alt="Frontend Development"
                         loading="lazy"
                       />
                     </div>
@@ -1221,15 +1220,26 @@
                   >
                 </div>
                 <div class="col-12 col-md-5">
-                  <h5 class="resume-lines__title animate-in-up">
-                    Associate Software Developer
-                  </h5>
-                  <p class="resume-lines__source animate-in-up">
-                    at
-                    <a href="#" class="text-link-bold" target="_blank"
-                      >Virtuos Digital Ltd.</a
-                    >
-                  </p>
+                  <div class="resume-lines__company">
+                    <!-- Company Logo - Add your logo here -->
+                    <div class="company-logo animate-in-up">
+                      <img
+                        src="img/experience/Virtuos_Heart.svg"
+                        alt="Virtuos Digital Ltd."
+                      />
+                    </div>
+                    <div class="company-info">
+                      <h5 class="resume-lines__title animate-in-up">
+                        Associate Software Developer
+                      </h5>
+                      <p class="resume-lines__source animate-in-up">
+                        at
+                        <a href="https://virtuos.com" class="text-link-bold" target="_blank"
+                          >Virtuos Digital Ltd.</a
+                        >
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-12 col-md-5">
                   <p class="small resume-lines__descr animate-in-up">
@@ -1254,13 +1264,21 @@
                   >
                 </div>
                 <div class="col-12 col-md-5">
-                  <h5 class="resume-lines__title animate-in-up">
-                    Freelance Software Developer
-                  </h5>
-                  <p class="resume-lines__source animate-in-up">
-                    on
-                    <span class="text-link-bold">Fiverr & Upwork</span>
-                  </p>
+                  <div class="resume-lines__company">
+                    <!-- Company Logo - Add your logo here -->
+                    <div class="company-logo animate-in-up">
+                      <img src="img/experience/fiverr.jpg" alt="Freelance" />
+                    </div>
+                    <div class="company-info">
+                      <h5 class="resume-lines__title animate-in-up">
+                        Freelance Software Developer
+                      </h5>
+                      <p class="resume-lines__source animate-in-up">
+                        on
+                        <a href="https://fiverr.com/macleworks" class="text-link-bold" target="_blank">Fiverr</a> & Upwork
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-12 col-md-5">
                   <p class="small resume-lines__descr animate-in-up">
@@ -1287,15 +1305,23 @@
                   >
                 </div>
                 <div class="col-12 col-md-5">
-                  <h5 class="resume-lines__title animate-in-up">
-                    Software Development Intern
-                  </h5>
-                  <p class="resume-lines__source animate-in-up">
-                    at
-                    <a href="#" class="text-link-bold" target="_blank"
-                      >Scizers LLP</a
-                    >
-                  </p>
+                  <div class="resume-lines__company">
+                    <!-- Company Logo - Add your logo here -->
+                    <div class="company-logo animate-in-up" style="background: white;">
+                      <img src="img/experience/scizers.png" alt="Scizers LLP" />
+                    </div>
+                    <div class="company-info">
+                      <h5 class="resume-lines__title animate-in-up">
+                        Software Development Intern
+                      </h5>
+                      <p class="resume-lines__source animate-in-up">
+                        at
+                        <a href="https://scizers.com" class="text-link-bold" target="_blank"
+                          >Scizers LLP</a
+                        >
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-12 col-md-5">
                   <p class="small resume-lines__descr animate-in-up">
@@ -2001,13 +2027,27 @@
     <script>
       // Initialize minimalist Vanta.js effect only in hero section
       let vantaEffect;
+
+      // Helper function to get current theme
+      function getVantaTheme() {
+        const root = document.querySelector(":root");
+        const colorScheme = root.getAttribute("color-scheme");
+        if (colorScheme) {
+          return colorScheme === "dark";
+        }
+        // Fallback to localStorage or system preference
+        const storedTheme = localStorage.getItem("template.theme");
+        if (storedTheme) {
+          return storedTheme === "dark";
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+      }
+
       window.addEventListener("load", function () {
         setTimeout(function () {
           if (typeof VANTA !== "undefined" && VANTA.DOTS) {
-            // Get theme from body class or default to dark
-            const isDarkMode =
-              document.body.classList.contains("dark-mode") ||
-              window.matchMedia("(prefers-color-scheme: dark)").matches;
+            // Get initial theme
+            const isDarkMode = getVantaTheme();
 
             vantaEffect = VANTA.DOTS({
               el: ".main.intro",
@@ -2056,8 +2096,8 @@
             // Update background color on theme change
             const observer = new MutationObserver(function (mutations) {
               mutations.forEach(function (mutation) {
-                if (mutation.attributeName === "class") {
-                  const isDark = document.body.classList.contains("dark-mode");
+                if (mutation.attributeName === "color-scheme") {
+                  const isDark = getVantaTheme();
                   if (vantaEffect) {
                     vantaEffect.setOptions({
                       backgroundColor: isDark ? 0x111111 : 0xe6ebf4,
@@ -2066,7 +2106,10 @@
                 }
               });
             });
-            observer.observe(document.body, { attributes: true });
+            // Observe the :root element for color-scheme attribute changes
+            observer.observe(document.querySelector(":root"), {
+              attributes: true,
+            });
           }
         }, 500);
       });

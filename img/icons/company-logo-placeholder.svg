@@ -1,0 +1,6 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="8" fill="#1a1a1a"/>
+  <path d="M32 16L44 26V44C44 45.1046 43.1046 46 42 46H22C20.8954 46 20 45.1046 20 44V26L32 16Z" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M26 46V32H38V46" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="32" y="38" font-family="Arial, sans-serif" font-size="8" fill="#999" text-anchor="middle">LOGO</text>
+</svg>
