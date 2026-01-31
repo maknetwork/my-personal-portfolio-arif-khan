@@ -51,8 +51,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Mohd Arif Khan Portfolio" />
     <meta property="og:locale" content="en_IN" />
-    <meta property="og:image:height" content="1200" />
     <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta
       property="og:title"
       content="Mohd Arif Khan - Senior Full Stack Developer India | Node.js React Python Expert"
@@ -92,7 +92,6 @@
     <!-- Robots Meta -->
     <meta
       name="robots"
-      `
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
     <meta name="googlebot" content="index, follow" />
@@ -299,6 +298,86 @@
         }
       }
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What technologies does Mohd Arif Khan specialize in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mohd Arif Khan specializes in full-stack development with expertise in Node.js, React, Python, MongoDB, PostgreSQL, AWS, Docker, Kubernetes, and microservices architecture. He has 4+ years of experience building enterprise-grade scalable web applications."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is Mohd Arif Khan located?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mohd Arif Khan is based in Gurugram, Haryana, India and is available for full-time opportunities and remote work engagements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What services does Mohd Arif Khan offer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Services include backend development with Node.js and Python, frontend development with React and Next.js, cloud infrastructure setup with AWS, microservices architecture, REST API development, GraphQL implementation, database design with MongoDB and PostgreSQL, and DevOps with Docker and Kubernetes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I contact Mohd Arif Khan for projects?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can contact Mohd Arif Khan via email at arifwip@gmail.com or call +91 93540 15920. You can also connect through LinkedIn or GitHub profiles listed on the website."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What type of projects has Mohd Arif Khan worked on?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mohd Arif Khan has worked on enterprise-grade projects including AI-powered marketing platforms, WhatsApp integration systems, field service management platforms, multi-tenant SaaS applications, real-time collaboration tools, and scalable backend systems serving thousands of users."
+            }
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Mohd Arif Khan - Full Stack Development Services",
+        "description": "Professional full-stack development services specializing in Node.js, React, Python, MongoDB, PostgreSQL, AWS, and microservices architecture.",
+        "url": "https://mohdarifkhan.com",
+        "telephone": "+919354015920",
+        "email": "arifwip@gmail.com",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Gurugram",
+          "addressRegion": "Haryana",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "28.4595",
+          "longitude": "77.0266"
+        },
+        "areaServed": ["IN", "US", "GB", "CA", "AU"],
+        "serviceType": [
+          "Full Stack Development",
+          "Backend Development",
+          "Frontend Development",
+          "Cloud Architecture",
+          "API Development",
+          "Microservices Development"
+        ]
+      }
+    </script>
     <!-- Structured Data - JSON-LD Schema.org Markup End -->
 
     <!-- reCAPTCHA v3 Script -->
@@ -322,34 +401,34 @@
     <header id="header" class="header d-flex justify-content-between">
       <!-- Navigation Menu Start -->
       <div class="header__navigation">
-        <nav id="menu" class="menu">
+        <nav id="menu" class="menu" role="navigation" aria-label="Main navigation">
           <ul class="menu__list d-flex justify-content-start">
             <li class="menu__item">
-              <a class="menu__link btn" href="#home">
+              <a class="menu__link btn" href="#home" aria-label="Go to home section">
                 <span class="menu__caption">Home</span>
                 <i class="ph-bold ph-house-simple"></i>
               </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link btn" href="#portfolio">
+              <a class="menu__link btn" href="#portfolio" aria-label="Go to portfolio section">
                 <span class="menu__caption">Portfolio</span>
                 <i class="ph-bold ph-squares-four"></i>
               </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link btn" href="#about">
+              <a class="menu__link btn" href="#about" aria-label="Go to about section">
                 <span class="menu__caption">About Me</span>
                 <i class="ph-bold ph-user"></i>
               </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link btn" href="#resume">
+              <a class="menu__link btn" href="#resume" aria-label="Go to resume section">
                 <span class="menu__caption">Resume</span>
                 <i class="ph-bold ph-article"></i>
               </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link btn" href="#contact">
+              <a class="menu__link btn" href="#contact" aria-label="Go to contact section">
                 <span class="menu__caption">Contact</span>
                 <i class="ph-bold ph-envelope"></i>
               </a>
@@ -443,6 +522,8 @@
               src="img/avatars/myphoto.png"
               alt="Mohd Arif Khan - Full Stack Software Engineer"
               fetchpriority="high"
+              width="200"
+              height="200"
             />
           </div>
         </div>
@@ -1587,9 +1668,11 @@
                       >
                         <div class="tauthor__avatar">
                           <img
-                            src="https://dummyimage.com/400x400/4d4d4d/636363"
-                            alt="Client Review"
+                            src="https://ui-avatars.com/api/?name=Enterprise+Client&size=400&background=FF8C42&color=fff&bold=true"
+                            alt="Enterprise Client - Fortune 500 Company Project Manager"
                             loading="lazy"
+                            width="400"
+                            height="400"
                           />
                         </div>
                         <div
@@ -1629,9 +1712,11 @@
                       >
                         <div class="tauthor__avatar">
                           <img
-                            src="https://dummyimage.com/400x400/4d4d4d/636363"
-                            alt="Client Review"
+                            src="https://ui-avatars.com/api/?name=International+Client&size=400&background=6366F1&color=fff&bold=true"
+                            alt="International Client - Tech Startup CTO"
                             loading="lazy"
+                            width="400"
+                            height="400"
                           />
                         </div>
                         <div
