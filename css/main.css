@@ -4395,7 +4395,7 @@ form textarea:required:valid {
     flex-direction: column;
     gap: 1.2rem;
   }
-  
+
   .company-logo {
     width: 4rem;
     height: 4rem;
