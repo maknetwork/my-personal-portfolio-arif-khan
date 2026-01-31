@@ -351,11 +351,19 @@
           aria-checked="true"
           title="Toggle theme"
         ></button>
-        <a class="btn btn-default btn-hover btn-hover-accent" href="index.html" aria-label="Back to home">
+        <a
+          class="btn btn-default btn-hover btn-hover-accent"
+          href="index.html"
+          aria-label="Back to home"
+        >
           <i class="ph-bold ph-arrow-left"></i>
           <span class="btn-caption">Back to Home</span>
         </a>
-        <button class="btn btn-default btn-hover btn-hover-outline" onclick="downloadResume()" aria-label="Download resume">
+        <button
+          class="btn btn-default btn-hover btn-hover-outline"
+          onclick="downloadResume()"
+          aria-label="Download resume"
+        >
           <i class="ph-bold ph-download-simple"></i>
           <span class="btn-caption">Download PDF</span>
         </button>
@@ -369,13 +377,24 @@
         <!-- PDF Controls -->
         <div class="pdf-controls">
           <div class="control-group">
-            <button class="btn btn-s" id="prev-page" onclick="previousPage()" aria-label="Previous page">
+            <button
+              class="btn btn-s"
+              id="prev-page"
+              onclick="previousPage()"
+              aria-label="Previous page"
+            >
               <i class="ph-bold ph-caret-left"></i>
             </button>
             <span class="page-info">
-              <span id="current-page">1</span> / <span id="total-pages">--</span>
+              <span id="current-page">1</span> /
+              <span id="total-pages">--</span>
             </span>
-            <button class="btn btn-s" id="next-page" onclick="nextPage()" aria-label="Next page">
+            <button
+              class="btn btn-s"
+              id="next-page"
+              onclick="nextPage()"
+              aria-label="Next page"
+            >
               <i class="ph-bold ph-caret-right"></i>
             </button>
           </div>
@@ -408,26 +427,29 @@
     <script defer src="js/libs.min.js"></script>
     <script>
       // Theme switcher initialization
-      document.addEventListener('DOMContentLoaded', function() {
-        const switcher = document.getElementById('color-switcher');
-        const root = document.querySelector(':root');
-        
+      document.addEventListener("DOMContentLoaded", function () {
+        const switcher = document.getElementById("color-switcher");
+        const root = document.querySelector(":root");
+
         // Check for saved theme preference or default to system preference
-        const currentTheme = localStorage.getItem('template.theme') || 
-          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
-        root.setAttribute('color-scheme', currentTheme);
-        switcher.setAttribute('aria-checked', currentTheme === 'dark');
-        
+        const currentTheme =
+          localStorage.getItem("template.theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+
+        root.setAttribute("color-scheme", currentTheme);
+        switcher.setAttribute("aria-checked", currentTheme === "dark");
+
         // Theme switcher click handler
-        switcher.addEventListener('click', function() {
-          const currentTheme = root.getAttribute('color-scheme');
-          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-          
-          root.setAttribute('color-scheme', newTheme);
-          switcher.setAttribute('aria-checked', newTheme === 'dark');
-          localStorage.setItem('template.theme', newTheme);
-          
+        switcher.addEventListener("click", function () {
+          const currentTheme = root.getAttribute("color-scheme");
+          const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+          root.setAttribute("color-scheme", newTheme);
+          switcher.setAttribute("aria-checked", newTheme === "dark");
+          localStorage.setItem("template.theme", newTheme);
+
           // Re-render PDF with new theme background
           if (pdfDoc && currentPage) {
             renderPage(currentPage);
@@ -438,32 +460,34 @@
     <!-- PDF.js Script -->
     <script>
       // Configure PDF.js worker
-      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
       // Local PDF file
-      const pdfUrl = 'Resume.pdf';
-      
+      const pdfUrl = "Resume.pdf";
+
       let pdfDoc = null;
       let currentPage = 1;
       let totalPages = 0;
       let currentZoom = 1.5;
-      const canvas = document.getElementById('pdf-canvas');
-      const ctx = canvas.getContext('2d');
+      const canvas = document.getElementById("pdf-canvas");
+      const ctx = canvas.getContext("2d");
 
       // Load the PDF
       async function loadPDF() {
         try {
           pdfDoc = await pdfjsLib.getDocument(pdfUrl).promise;
           totalPages = pdfDoc.numPages;
-          document.getElementById('total-pages').textContent = totalPages;
-          document.getElementById('loading-message').style.display = 'none';
+          document.getElementById("total-pages").textContent = totalPages;
+          document.getElementById("loading-message").style.display = "none";
           renderPage(currentPage);
         } catch (error) {
-          console.error('Error loading PDF:', error);
-          document.getElementById('loading-message').style.display = 'none';
-          const errorMsg = document.getElementById('error-message');
-          errorMsg.textContent = 'Unable to load PDF. Please ensure Resume.pdf exists in the same directory.';
-          errorMsg.style.display = 'block';
+          console.error("Error loading PDF:", error);
+          document.getElementById("loading-message").style.display = "none";
+          const errorMsg = document.getElementById("error-message");
+          errorMsg.textContent =
+            "Unable to load PDF. Please ensure Resume.pdf exists in the same directory.";
+          errorMsg.style.display = "block";
         }
       }
 
@@ -478,19 +502,19 @@
 
           const renderContext = {
             canvasContext: ctx,
-            viewport: viewport
+            viewport: viewport,
           };
 
           await page.render(renderContext).promise;
-          
+
           // Update page number
-          document.getElementById('current-page').textContent = pageNum;
-          
+          document.getElementById("current-page").textContent = pageNum;
+
           // Update button states
-          document.getElementById('prev-page').disabled = pageNum <= 1;
-          document.getElementById('next-page').disabled = pageNum >= totalPages;
+          document.getElementById("prev-page").disabled = pageNum <= 1;
+          document.getElementById("next-page").disabled = pageNum >= totalPages;
         } catch (error) {
-          console.error('Error rendering page:', error);
+          console.error("Error rendering page:", error);
         }
       }
 
@@ -513,46 +537,48 @@
       function zoomIn() {
         currentZoom += 0.25;
         if (currentZoom > 3) currentZoom = 3;
-        document.getElementById('zoom-level').textContent = Math.round(currentZoom * 100) + '%';
+        document.getElementById("zoom-level").textContent =
+          Math.round(currentZoom * 100) + "%";
         renderPage(currentPage);
       }
 
       function zoomOut() {
         currentZoom -= 0.25;
         if (currentZoom < 0.5) currentZoom = 0.5;
-        document.getElementById('zoom-level').textContent = Math.round(currentZoom * 100) + '%';
+        document.getElementById("zoom-level").textContent =
+          Math.round(currentZoom * 100) + "%";
         renderPage(currentPage);
       }
 
       // Download function
       function downloadResume() {
-        const link = document.createElement('a');
+        const link = document.createElement("a");
         link.href = pdfUrl;
-        link.download = 'Mohd_Arif_Khan_Resume.pdf';
+        link.download = "Mohd_Arif_Khan_Resume.pdf";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
       }
 
       // Keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
           previousPage();
-        } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
           nextPage();
-        } else if (e.key === '+' || e.key === '=') {
+        } else if (e.key === "+" || e.key === "=") {
           zoomIn();
-        } else if (e.key === '-' || e.key === '_') {
+        } else if (e.key === "-" || e.key === "_") {
           zoomOut();
         }
       });
 
       // Initialize - hide loader and load PDF
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          document.getElementById('loaderContent').classList.add('fade-out');
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          document.getElementById("loaderContent").classList.add("fade-out");
           setTimeout(() => {
-            document.getElementById('loader').classList.add('loaded');
+            document.getElementById("loader").classList.add("loaded");
             loadPDF();
           }, 300);
         }, 500);
