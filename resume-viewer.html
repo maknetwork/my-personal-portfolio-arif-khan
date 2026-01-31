@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Page Title -->
+    <title>Resume - Mohd Arif Khan | Full Stack Developer</title>
+
+    <!-- Meta Tags -->
+    <meta
+      name="description"
+      content="View and download the resume of Mohd Arif Khan - Full Stack Developer in Gurugram, India with 4+ years expertise in Node.js, React, Python, MongoDB, PostgreSQL, AWS."
+    />
+    <meta name="author" content="Mohd Arif Khan" />
+
+    <!-- Viewport Meta-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- Template Favicon & Icons Start -->
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="any" />
+    <link rel="icon" href="img/favicon/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="img/favicon/manifest.webmanifest" />
+    <!-- Template Favicon & Icons End -->
+
+    <!-- Template Styles Start -->
+    <link rel="stylesheet" href="css/loaders/loader.css" />
+    <link rel="stylesheet" href="css/plugins.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- Template Styles End -->
+
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <!-- Custom Browser Color Start -->
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#dcdce7"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#111111"
+    />
+    <meta name="msapplication-navbutton-color" content="#111111" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <!-- Custom Browser Color End -->
+
+    <!-- Custom Styles for Resume Viewer -->
+    <style>
+      /* Resume Viewer Specific Styles */
+      .resume-viewer-page {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+      }
+
+      .resume-viewer-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background-color: var(--base);
+        border-bottom: 1px solid var(--stroke-elements);
+        padding: 2rem 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+      }
+
+      .resume-viewer-title {
+        font: normal 700 2.8rem/1.2 var(--_font-accent);
+        color: var(--t-bright);
+        margin: 0;
+        white-space: nowrap;
+      }
+
+      .resume-viewer-actions {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: nowrap;
+      }
+
+      .resume-viewer-content {
+        padding-top: 12rem;
+        padding-bottom: 6rem;
+        max-width: 140rem;
+        margin: 0 auto;
+        padding-left: 4rem;
+        padding-right: 4rem;
+      }
+
+      .pdf-viewer-container {
+        background-color: var(--base-tint);
+        border-radius: var(--_radius-m);
+        padding: 4rem;
+        box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--stroke-elements);
+      }
+
+      .pdf-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background-color: var(--base);
+        border-radius: var(--_radius-s);
+        border: 1px solid var(--stroke-elements);
+        flex-wrap: wrap;
+      }
+
+      .pdf-controls .control-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .pdf-controls .page-info {
+        font: normal 600 1.6rem/1.2 var(--_font-accent);
+        color: var(--t-bright);
+        padding: 0 1rem;
+        min-width: 10rem;
+        text-align: center;
+      }
+
+      .pdf-canvas-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        overflow-x: auto;
+        background-color: var(--base-shade);
+        border-radius: var(--_radius-s);
+        padding: 4rem 3rem;
+        min-height: 85rem;
+      }
+
+      [color-scheme="light"] .pdf-canvas-wrapper {
+        background-color: #ffffff;
+      }
+
+      #pdf-canvas {
+        max-width: 100%;
+        height: auto;
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.15);
+        border-radius: 0.4rem;
+        display: block;
+      }
+
+      .loading-message,
+      .error-message {
+        text-align: center;
+        padding: 4rem 2rem;
+        font: normal 400 1.8rem/1.5 var(--_font-default);
+      }
+
+      .loading-message {
+        color: var(--t-muted);
+      }
+
+      .error-message {
+        color: var(--t-accent);
+        background-color: var(--secondary-rgba);
+        border-radius: var(--_radius-s);
+        margin: 2rem 0;
+        display: none;
+      }
+
+      /* Tablet adjustments */
+      @media (max-width: 1024px) {
+        .resume-viewer-header {
+          padding: 2rem 3rem;
+        }
+
+        .resume-viewer-content {
+          padding-left: 3rem;
+          padding-right: 3rem;
+        }
+
+        .pdf-viewer-container {
+          padding: 3rem;
+        }
+      }
+
+      /* Mobile adjustments */
+      @media (max-width: 768px) {
+        .resume-viewer-header {
+          padding: 1.5rem 2rem;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+        }
+
+        .resume-viewer-title {
+          font-size: 2.2rem;
+          width: 100%;
+        }
+
+        .resume-viewer-actions {
+          width: 100%;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .resume-viewer-actions .btn {
+          flex: 1;
+          min-width: calc(50% - 0.5rem);
+          justify-content: center;
+        }
+
+        .resume-viewer-content {
+          padding-top: 16rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+          padding-bottom: 4rem;
+        }
+
+        .pdf-viewer-container {
+          padding: 2rem;
+        }
+
+        .pdf-controls {
+          padding: 1.5rem;
+          gap: 1rem;
+        }
+
+        .pdf-controls .control-group {
+          gap: 0.8rem;
+        }
+
+        .pdf-controls .page-info {
+          font-size: 1.4rem;
+          min-width: 8rem;
+          padding: 0 0.5rem;
+        }
+
+        .pdf-canvas-wrapper {
+          padding: 2rem 1rem;
+          min-height: 60rem;
+        }
+      }
+
+      /* Small mobile adjustments */
+      @media (max-width: 480px) {
+        .resume-viewer-header {
+          padding: 1.2rem 1.5rem;
+        }
+
+        .resume-viewer-title {
+          font-size: 1.8rem;
+        }
+
+        .resume-viewer-content {
+          padding-top: 18rem;
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+
+        .pdf-viewer-container {
+          padding: 1.5rem;
+        }
+
+        .pdf-controls {
+          flex-direction: column;
+          gap: 1.5rem;
+          padding: 1.5rem;
+        }
+
+        .pdf-controls .control-group {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .pdf-controls .page-info {
+          font-size: 1.4rem;
+        }
+
+        .pdf-canvas-wrapper {
+          padding: 1.5rem 0.5rem;
+        }
+
+        .resume-viewer-actions .btn {
+          font-size: 1.3rem;
+          padding: 1rem 1.2rem;
+        }
+
+        .resume-viewer-actions .btn .btn-caption {
+          display: none;
+        }
+
+        .resume-viewer-actions .btn i {
+          margin: 0;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-in {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+    </style>
+  </head>
+
+  <body class="resume-viewer-page">
+    <!-- Loader Start -->
+    <div id="loader" class="loader">
+      <div id="loaderContent" class="loader__content">
+        <div class="loader__shadow"></div>
+        <div class="loader__box"></div>
+      </div>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Header Start -->
+    <header class="resume-viewer-header">
+      <h1 class="resume-viewer-title">My Resume</h1>
+      <div class="resume-viewer-actions">
+        <button
+          id="color-switcher"
+          class="color-switcher btn"
+          type="button"
+          role="switch"
+          aria-label="light/dark mode"
+          aria-checked="true"
+          title="Toggle theme"
+        ></button>
+        <a class="btn btn-default btn-hover btn-hover-accent" href="index.html" aria-label="Back to home">
+          <i class="ph-bold ph-arrow-left"></i>
+          <span class="btn-caption">Back to Home</span>
+        </a>
+        <button class="btn btn-default btn-hover btn-hover-outline" onclick="downloadResume()" aria-label="Download resume">
+          <i class="ph-bold ph-download-simple"></i>
+          <span class="btn-caption">Download PDF</span>
+        </button>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Main Content Start -->
+    <div class="resume-viewer-content">
+      <div class="pdf-viewer-container animate-in">
+        <!-- PDF Controls -->
+        <div class="pdf-controls">
+          <div class="control-group">
+            <button class="btn btn-s" id="prev-page" onclick="previousPage()" aria-label="Previous page">
+              <i class="ph-bold ph-caret-left"></i>
+            </button>
+            <span class="page-info">
+              <span id="current-page">1</span> / <span id="total-pages">--</span>
+            </span>
+            <button class="btn btn-s" id="next-page" onclick="nextPage()" aria-label="Next page">
+              <i class="ph-bold ph-caret-right"></i>
+            </button>
+          </div>
+          <div class="control-group">
+            <button class="btn btn-s" onclick="zoomOut()" aria-label="Zoom out">
+              <i class="ph-bold ph-magnifying-glass-minus"></i>
+            </button>
+            <span class="page-info" id="zoom-level">100%</span>
+            <button class="btn btn-s" onclick="zoomIn()" aria-label="Zoom in">
+              <i class="ph-bold ph-magnifying-glass-plus"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- PDF Canvas -->
+        <div class="pdf-canvas-wrapper">
+          <canvas id="pdf-canvas"></canvas>
+        </div>
+
+        <!-- Loading/Error Messages -->
+        <div id="loading-message" class="loading-message">
+          Loading resume...
+        </div>
+        <div id="error-message" class="error-message"></div>
+      </div>
+    </div>
+    <!-- Main Content End -->
+
+    <!-- Load Scripts Start -->
+    <script defer src="js/libs.min.js"></script>
+    <script>
+      // Theme switcher initialization
+      document.addEventListener('DOMContentLoaded', function() {
+        const switcher = document.getElementById('color-switcher');
+        const root = document.querySelector(':root');
+        
+        // Check for saved theme preference or default to system preference
+        const currentTheme = localStorage.getItem('template.theme') || 
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        root.setAttribute('color-scheme', currentTheme);
+        switcher.setAttribute('aria-checked', currentTheme === 'dark');
+        
+        // Theme switcher click handler
+        switcher.addEventListener('click', function() {
+          const currentTheme = root.getAttribute('color-scheme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          
+          root.setAttribute('color-scheme', newTheme);
+          switcher.setAttribute('aria-checked', newTheme === 'dark');
+          localStorage.setItem('template.theme', newTheme);
+          
+          // Re-render PDF with new theme background
+          if (pdfDoc && currentPage) {
+            renderPage(currentPage);
+          }
+        });
+      });
+    </script>
+    <!-- PDF.js Script -->
+    <script>
+      // Configure PDF.js worker
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+      // Local PDF file
+      const pdfUrl = 'Resume.pdf';
+      
+      let pdfDoc = null;
+      let currentPage = 1;
+      let totalPages = 0;
+      let currentZoom = 1.5;
+      const canvas = document.getElementById('pdf-canvas');
+      const ctx = canvas.getContext('2d');
+
+      // Load the PDF
+      async function loadPDF() {
+        try {
+          pdfDoc = await pdfjsLib.getDocument(pdfUrl).promise;
+          totalPages = pdfDoc.numPages;
+          document.getElementById('total-pages').textContent = totalPages;
+          document.getElementById('loading-message').style.display = 'none';
+          renderPage(currentPage);
+        } catch (error) {
+          console.error('Error loading PDF:', error);
+          document.getElementById('loading-message').style.display = 'none';
+          const errorMsg = document.getElementById('error-message');
+          errorMsg.textContent = 'Unable to load PDF. Please ensure Resume.pdf exists in the same directory.';
+          errorMsg.style.display = 'block';
+        }
+      }
+
+      // Render a specific page
+      async function renderPage(pageNum) {
+        try {
+          const page = await pdfDoc.getPage(pageNum);
+          const viewport = page.getViewport({ scale: currentZoom });
+
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+
+          const renderContext = {
+            canvasContext: ctx,
+            viewport: viewport
+          };
+
+          await page.render(renderContext).promise;
+          
+          // Update page number
+          document.getElementById('current-page').textContent = pageNum;
+          
+          // Update button states
+          document.getElementById('prev-page').disabled = pageNum <= 1;
+          document.getElementById('next-page').disabled = pageNum >= totalPages;
+        } catch (error) {
+          console.error('Error rendering page:', error);
+        }
+      }
+
+      // Navigation functions
+      function nextPage() {
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderPage(currentPage);
+        }
+      }
+
+      function previousPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          renderPage(currentPage);
+        }
+      }
+
+      // Zoom functions
+      function zoomIn() {
+        currentZoom += 0.25;
+        if (currentZoom > 3) currentZoom = 3;
+        document.getElementById('zoom-level').textContent = Math.round(currentZoom * 100) + '%';
+        renderPage(currentPage);
+      }
+
+      function zoomOut() {
+        currentZoom -= 0.25;
+        if (currentZoom < 0.5) currentZoom = 0.5;
+        document.getElementById('zoom-level').textContent = Math.round(currentZoom * 100) + '%';
+        renderPage(currentPage);
+      }
+
+      // Download function
+      function downloadResume() {
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'Mohd_Arif_Khan_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          previousPage();
+        } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          nextPage();
+        } else if (e.key === '+' || e.key === '=') {
+          zoomIn();
+        } else if (e.key === '-' || e.key === '_') {
+          zoomOut();
+        }
+      });
+
+      // Initialize - hide loader and load PDF
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.getElementById('loaderContent').classList.add('fade-out');
+          setTimeout(() => {
+            document.getElementById('loader').classList.add('loaded');
+            loadPDF();
+          }, 300);
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
