@@ -41,6 +41,21 @@
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
+    <!-- Google Analytics (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-VVX45PD746"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-VVX45PD746");
+    </script>
+
     <!-- DNS Prefetch & Preconnect for Performance -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -401,34 +416,59 @@
     <header id="header" class="header d-flex justify-content-between">
       <!-- Navigation Menu Start -->
       <div class="header__navigation">
-        <nav id="menu" class="menu" role="navigation" aria-label="Main navigation">
+        <nav
+          id="menu"
+          class="menu"
+          role="navigation"
+          aria-label="Main navigation"
+        >
           <ul class="menu__list d-flex justify-content-start">
             <li class="menu__item">
-              <a class="menu__link btn" href="#home" aria-label="Go to home section">
+              <a
+                class="menu__link btn"
+                href="#home"
+                aria-label="Go to home section"
+              >
                 <span class="menu__caption">Home</span>
                 <i class="ph-bold ph-house-simple"></i>
               </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link btn" href="#portfolio" aria-label="Go to portfolio section">
+              <a
+                class="menu__link btn"
+                href="#portfolio"
+                aria-label="Go to portfolio section"
+              >
                 <span class="menu__caption">Portfolio</span>
                 <i class="ph-bold ph-squares-four"></i>
               </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link btn" href="#about" aria-label="Go to about section">
+              <a
+                class="menu__link btn"
+                href="#about"
+                aria-label="Go to about section"
+              >
                 <span class="menu__caption">About Me</span>
                 <i class="ph-bold ph-user"></i>
               </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link btn" href="#resume" aria-label="Go to resume section">
+              <a
+                class="menu__link btn"
+                href="#resume"
+                aria-label="Go to resume section"
+              >
                 <span class="menu__caption">Resume</span>
                 <i class="ph-bold ph-article"></i>
               </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link btn" href="#contact" aria-label="Go to contact section">
+              <a
+                class="menu__link btn"
+                href="#contact"
+                aria-label="Go to contact section"
+              >
                 <span class="menu__caption">Contact</span>
                 <i class="ph-bold ph-envelope"></i>
               </a>
