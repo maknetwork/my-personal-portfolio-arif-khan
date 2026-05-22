@@ -45,13 +45,18 @@
   position: absolute;
   inset: 0;
   opacity: 0.08;
-  background-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.3) 0%, transparent 50%),
+  background-image:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 50%
+    ),
     repeating-linear-gradient(
       45deg,
       transparent,
       transparent 20px,
-      rgba(255,255,255,0.04) 20px,
-      rgba(255,255,255,0.04) 40px
+      rgba(255, 255, 255, 0.04) 20px,
+      rgba(255, 255, 255, 0.04) 40px
     );
 }
 
@@ -63,7 +68,7 @@
   left: 0;
   right: 0;
   height: 55%;
-  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 100%);
   pointer-events: none;
 }
 
@@ -86,14 +91,16 @@
   color: rgba(255, 255, 255, 0.9);
   z-index: 1;
   transition: transform 0.4s cubic-bezier(0.23, 0.65, 0.74, 1.09);
-  filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4));
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4));
   position: relative;
 }
 
 .gallery__item:hover .portfolio-card-icon {
   opacity: 0;
   transform: scale(0.85) translateY(-8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .portfolio-card-label {
@@ -110,7 +117,7 @@
   text-transform: uppercase;
   padding: 0.3rem 0.85rem;
   border-radius: 100px;
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   z-index: 2;
 }
 
@@ -127,7 +134,8 @@
 
 /* Card visual: subtle lift + accent glow on hover (matches tools-cards pattern) */
 .portfolio-card-visual {
-  transition: transform 0.3s cubic-bezier(0.23, 0.65, 0.74, 1.09),
+  transition:
+    transform 0.3s cubic-bezier(0.23, 0.65, 0.74, 1.09),
     box-shadow 0.3s ease;
 }
 .gallery__item:hover .portfolio-card-visual {
@@ -139,7 +147,9 @@
 .gallery__item:hover .portfolio-card-icon {
   opacity: 1;
   transform: translateY(-8px) scale(1.1);
-  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.23, 0.65, 0.74, 1.09);
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.23, 0.65, 0.74, 1.09);
 }
 
 /* Category label stays visible */
@@ -203,14 +213,15 @@
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.35s ease, opacity 0.3s ease;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.3s ease;
 }
 .gallery__item:hover .gallery__descr p.small {
   max-height: 10rem;
   opacity: 0.78;
 }
- * ------------------------------------------------ */
-.achievements__number {
+* ------------------------------------------------ */ .achievements__number {
   background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -225,7 +236,9 @@
 /* Accent left border on service card hover */
 .cards__card {
   position: relative;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
     transform 0.3s cubic-bezier(0.23, 0.65, 0.74, 1.09) !important;
 }
 
@@ -240,7 +253,9 @@
   background: linear-gradient(180deg, var(--accent) 0%, var(--secondary) 100%);
   opacity: 0;
   transform: scaleY(0.4);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .cards__item:hover .cards__card::after {
@@ -285,7 +300,8 @@
 
 /* Subtle lift animation on tool cards */
 .tools-cards__card {
-  transition: transform 0.25s cubic-bezier(0.23, 0.65, 0.74, 1.09),
+  transition:
+    transform 0.25s cubic-bezier(0.23, 0.65, 0.74, 1.09),
     box-shadow 0.25s ease !important;
 }
 
@@ -314,13 +330,19 @@
  * 10. Social Cards — Color on Hover
  * ------------------------------------------------ */
 .socials-cards__card {
-  transition: background 0.3s ease, color 0.3s ease,
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
     transform 0.25s cubic-bezier(0.23, 0.65, 0.74, 1.09),
     box-shadow 0.25s ease !important;
 }
 
 .socials-cards__item:hover .socials-cards__card {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--accent) 0%,
+    var(--secondary) 100%
+  ) !important;
   color: #fff !important;
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3) !important;
@@ -334,11 +356,14 @@
  * 11. "Let's Talk" CTA Button — Pulse Glow
  * ------------------------------------------------ */
 .header__trigger {
-  transition: box-shadow 0.3s ease, transform 0.2s ease !important;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.2s ease !important;
 }
 
 .header__trigger:hover {
-  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2),
+  box-shadow:
+    0 0 0 4px rgba(255, 107, 53, 0.2),
     0 4px 20px rgba(255, 107, 53, 0.35) !important;
   transform: translateY(-1px);
 }
@@ -348,7 +373,9 @@
  * ------------------------------------------------ */
 .testimonials-card {
   border-left: 3px solid var(--accent);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .testimonials-card:hover {
@@ -376,7 +403,9 @@
 
 /* Rounded tags - slight lift on hover */
 .rounded-tag {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .rounded-tag:hover {
