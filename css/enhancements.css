@@ -28,133 +28,113 @@
 /* ------------------------------------------------
  * 3. Portfolio Project Cards (Visual Placeholders)
  * ------------------------------------------------ */
+
+/* Card visual: matches template card language (white bg, subtle border) */
 .portfolio-card-visual {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 0;
-  padding-top: 18%;
+  border-radius: var(--_radius-xl);
+  background-color: var(--base);
+  border: 1px solid var(--stroke-elements);
+  transition:
+    transform 0.3s cubic-bezier(0.23, 0.65, 0.74, 1.09),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
+/* Orange top accent bar — matches the template's accent usage */
 .portfolio-card-visual::before {
   content: "";
   position: absolute;
-  inset: 0;
-  opacity: 0.08;
-  background-image:
-    radial-gradient(
-      circle at 30% 20%,
-      rgba(255, 255, 255, 0.3) 0%,
-      transparent 50%
-    ),
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 20px,
-      rgba(255, 255, 255, 0.04) 20px,
-      rgba(255, 255, 255, 0.04) 40px
-    );
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 1;
 }
 
-/* Bottom fade so tags are readable */
+/* Subtle background pattern — very light, stays in theme */
 .portfolio-card-visual::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 55%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 100%);
+  inset: 0;
+  background-image: radial-gradient(
+    circle at 70% 80%,
+    rgba(255, 140, 66, 0.05) 0%,
+    transparent 60%
+  );
   pointer-events: none;
 }
 
-/* Individual project color schemes */
-.portfolio-card-visual--1 {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-}
-.portfolio-card-visual--2 {
-  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #3730a3 100%);
-}
-.portfolio-card-visual--3 {
-  background: linear-gradient(135deg, #1a2f1a 0%, #14532d 50%, #166534 100%);
-}
+/* All cards use the theme base color — no dark gradients */
+.portfolio-card-visual--1,
+.portfolio-card-visual--2,
+.portfolio-card-visual--3,
 .portfolio-card-visual--4 {
-  background: linear-gradient(135deg, #1c1917 0%, #44403c 50%, #57534e 100%);
+  background-color: var(--base);
 }
 
+/* Icon: orange circle container, matches tools-cards icon treatment */
 .portfolio-card-icon {
-  font-size: 4.5rem;
-  color: rgba(255, 255, 255, 0.9);
+  width: 6rem;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 140, 66, 0.1);
+  border-radius: 50%;
+  font-size: 2.8rem;
+  color: var(--accent);
   z-index: 1;
-  transition: transform 0.4s cubic-bezier(0.23, 0.65, 0.74, 1.09);
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4));
   position: relative;
-}
-
-.gallery__item:hover .portfolio-card-icon {
-  opacity: 0;
-  transform: scale(0.85) translateY(-8px);
   transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
+    transform 0.35s cubic-bezier(0.23, 0.65, 0.74, 1.09),
+    background 0.3s ease;
 }
 
+/* Category label: matches template's native rounded-tag pill style */
 .portfolio-card-label {
   position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: rgba(255, 255, 255, 0.95);
+  top: 1.4rem;
+  right: 1.4rem;
+  background: var(--base);
+  color: var(--t-base);
   font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0.3rem 0.85rem;
   border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--stroke-elements);
   z-index: 2;
 }
 
-/* ---- Portfolio card — theme-matched hover ---- */
-/* gallery__item: no clip needed, info flows below */
+/* ---- Portfolio card hover — mirrors tools-cards__card:hover exactly ---- */
 .gallery__item {
   overflow: visible;
-  border-radius: 0;
   transition: none;
 }
 .gallery__item:hover {
   z-index: 2;
 }
 
-/* Card visual: subtle lift + accent glow on hover (matches tools-cards pattern) */
-.portfolio-card-visual {
-  transition:
-    transform 0.3s cubic-bezier(0.23, 0.65, 0.74, 1.09),
-    box-shadow 0.3s ease;
-}
+/* Lift + accent border + orange shadow — same as tools cards */
 .gallery__item:hover .portfolio-card-visual {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(255, 107, 53, 0.18);
+  border-color: var(--accent);
+  box-shadow: 0 12px 24px rgba(255, 107, 53, 0.15);
 }
 
-/* Icon lifts on hover (not hides) */
+/* Icon scales up and background deepens on hover */
 .gallery__item:hover .portfolio-card-icon {
-  opacity: 1;
-  transform: translateY(-8px) scale(1.1);
-  transition:
-    opacity 0.3s ease,
-    transform 0.4s cubic-bezier(0.23, 0.65, 0.74, 1.09);
-}
-
-/* Category label stays visible */
-.gallery__item:hover .portfolio-card-label {
-  opacity: 1;
+  transform: translateY(-4px) scale(1.12);
+  background: rgba(255, 140, 66, 0.18);
 }
 
 /* Figcaption: flow naturally BELOW the card visual */
@@ -221,7 +201,11 @@
   max-height: 10rem;
   opacity: 0.78;
 }
-* ------------------------------------------------ */ .achievements__number {
+
+/* ------------------------------------------------
+ * 4. Achievement Numbers — Gradient Text
+ * ------------------------------------------------ */
+.achievements__number {
   background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -427,25 +411,14 @@
   border-color: rgba(16, 185, 129, 0.4);
 }
 
-[color-scheme="dark"] .portfolio-card-visual--1 {
-  background: linear-gradient(135deg, #0d0d1f 0%, #0a1628 50%, #0a2040 100%);
-}
-[color-scheme="dark"] .portfolio-card-visual--2 {
-  background: linear-gradient(135deg, #0d0b2b 0%, #1a1660 50%, #201b80 100%);
-}
-[color-scheme="dark"] .portfolio-card-visual--3 {
-  background: linear-gradient(135deg, #0d1a0d 0%, #0a3018 50%, #0d3d1c 100%);
-}
-[color-scheme="dark"] .portfolio-card-visual--4 {
-  background: linear-gradient(135deg, #111110 0%, #28251f 50%, #35302b 100%);
-}
-
 /* ------------------------------------------------
  * 17. Responsive Tweaks
  * ------------------------------------------------ */
 @media (max-width: 768px) {
   .portfolio-card-icon {
-    font-size: 3rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 2.2rem;
   }
 
   .headline__btnholder {
