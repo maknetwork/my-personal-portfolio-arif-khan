@@ -1,0 +1,431 @@
+/* ================================================
+ * Portfolio UI Enhancements
+ * Custom improvements for Mohd Arif Khan's portfolio
+ * ================================================ */
+
+/* ------------------------------------------------
+ * 2. Hero / Intro Section Enhancements
+ * ------------------------------------------------ */
+
+/* Subtle gradient overlay on the headline title for depth */
+.headline__title {
+  line-height: 1.08 !important;
+  letter-spacing: -0.02em;
+}
+
+/* "Welcome!" pill — more refined */
+.headline__subtitle {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Headline buttons — tighter, more professional spacing */
+.headline__btnholder {
+  gap: 0.75rem;
+  margin-top: 2.4rem;
+}
+
+/* ------------------------------------------------
+ * 3. Portfolio Project Cards (Visual Placeholders)
+ * ------------------------------------------------ */
+.portfolio-card-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0;
+  padding-top: 18%;
+}
+
+.portfolio-card-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.3) 0%, transparent 50%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.04) 20px,
+      rgba(255,255,255,0.04) 40px
+    );
+}
+
+/* Bottom fade so tags are readable */
+.portfolio-card-visual::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Individual project color schemes */
+.portfolio-card-visual--1 {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+.portfolio-card-visual--2 {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #3730a3 100%);
+}
+.portfolio-card-visual--3 {
+  background: linear-gradient(135deg, #1a2f1a 0%, #14532d 50%, #166534 100%);
+}
+.portfolio-card-visual--4 {
+  background: linear-gradient(135deg, #1c1917 0%, #44403c 50%, #57534e 100%);
+}
+
+.portfolio-card-icon {
+  font-size: 4.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.23, 0.65, 0.74, 1.09);
+  filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4));
+  position: relative;
+}
+
+.gallery__item:hover .portfolio-card-icon {
+  opacity: 0;
+  transform: scale(0.85) translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.portfolio-card-label {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.25);
+  z-index: 2;
+}
+
+/* ---- Portfolio card — theme-matched hover ---- */
+/* gallery__item: no clip needed, info flows below */
+.gallery__item {
+  overflow: visible;
+  border-radius: 0;
+  transition: none;
+}
+.gallery__item:hover {
+  z-index: 2;
+}
+
+/* Card visual: subtle lift + accent glow on hover (matches tools-cards pattern) */
+.portfolio-card-visual {
+  transition: transform 0.3s cubic-bezier(0.23, 0.65, 0.74, 1.09),
+    box-shadow 0.3s ease;
+}
+.gallery__item:hover .portfolio-card-visual {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(255, 107, 53, 0.18);
+}
+
+/* Icon lifts on hover (not hides) */
+.gallery__item:hover .portfolio-card-icon {
+  opacity: 1;
+  transform: translateY(-8px) scale(1.1);
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.23, 0.65, 0.74, 1.09);
+}
+
+/* Category label stays visible */
+.gallery__item:hover .portfolio-card-label {
+  opacity: 1;
+}
+
+/* Figcaption: flow naturally BELOW the card visual */
+.gallery__item .gallery__descr {
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  width: 100% !important;
+  padding: 1.6rem 0 0 !important;
+  background: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  pointer-events: auto !important;
+  display: block;
+  z-index: auto;
+}
+
+/* Always show project title */
+.gallery__item .gallery__descr h5,
+.gallery__item .gallery__descr h5.opposite {
+  display: block !important;
+  color: var(--t-bright) !important;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 0.8rem;
+  transition: color 0.25s ease;
+}
+.gallery__item:hover .gallery__descr h5,
+.gallery__item:hover .gallery__descr h5.opposite {
+  color: var(--t-accent) !important;
+}
+
+/* Tags always visible */
+.gallery__item .gallery__descr .card__tags {
+  margin-bottom: 0;
+}
+.gallery__item .gallery__descr .rounded-tag {
+  font-size: 1.25rem;
+  height: 2.8rem;
+  padding: 0 1rem;
+  margin: 0.3rem 0.5rem 0.3rem 0;
+}
+
+/* Description: hidden by default, fades in on hover */
+.gallery__item .gallery__descr p.small {
+  display: block !important;
+  color: var(--t-base) !important;
+  font-size: 1.35rem;
+  line-height: 1.55;
+  margin-top: 0.9rem;
+  margin-bottom: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+}
+.gallery__item:hover .gallery__descr p.small {
+  max-height: 10rem;
+  opacity: 0.78;
+}
+ * ------------------------------------------------ */
+.achievements__number {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* ------------------------------------------------
+ * 5. Services Cards — Visual Upgrade
+ * ------------------------------------------------ */
+
+/* Accent left border on service card hover */
+.cards__card {
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s cubic-bezier(0.23, 0.65, 0.74, 1.09) !important;
+}
+
+.cards__card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--secondary) 100%);
+  opacity: 0;
+  transform: scaleY(0.4);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cards__item:hover .cards__card::after {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/* ------------------------------------------------
+ * 6. Resume / Experience Timeline
+ * ------------------------------------------------ */
+
+/* Company logo container — consistent sizing */
+.company-logo {
+  width: 3rem;
+  height: 3rem;
+  min-width: 3rem;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--stroke-elements);
+  background: var(--base-tint);
+  padding: 4px;
+  transition: box-shadow 0.3s ease;
+}
+
+.resume-lines__item:hover .company-logo {
+  box-shadow: 0 4px 16px rgba(var(--accent), 0.15);
+}
+
+.company-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0.4rem;
+}
+
+/* ------------------------------------------------
+ * 7. Tech Stack Cards — Category Grouping
+ * ------------------------------------------------ */
+
+/* Subtle lift animation on tool cards */
+.tools-cards__card {
+  transition: transform 0.25s cubic-bezier(0.23, 0.65, 0.74, 1.09),
+    box-shadow 0.25s ease !important;
+}
+
+.tools-cards__item:hover .tools-cards__card {
+  transform: translateY(-4px);
+}
+
+/* ------------------------------------------------
+ * 8. Section Headings — Underline Accent
+ * ------------------------------------------------ */
+
+/* Gradient underline on h2 titles */
+.h2__title {
+  position: relative;
+}
+
+/* ------------------------------------------------
+ * 9. Contact Form — Input Focus States
+ * ------------------------------------------------ */
+.form-container .form input:focus,
+.form-container .form textarea:focus {
+  box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.15);
+}
+
+/* ------------------------------------------------
+ * 10. Social Cards — Color on Hover
+ * ------------------------------------------------ */
+.socials-cards__card {
+  transition: background 0.3s ease, color 0.3s ease,
+    transform 0.25s cubic-bezier(0.23, 0.65, 0.74, 1.09),
+    box-shadow 0.25s ease !important;
+}
+
+.socials-cards__item:hover .socials-cards__card {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%) !important;
+  color: #fff !important;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3) !important;
+}
+
+.socials-cards__item:hover .socials-cards__card i {
+  color: #fff !important;
+}
+
+/* ------------------------------------------------
+ * 11. "Let's Talk" CTA Button — Pulse Glow
+ * ------------------------------------------------ */
+.header__trigger {
+  transition: box-shadow 0.3s ease, transform 0.2s ease !important;
+}
+
+.header__trigger:hover {
+  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2),
+    0 4px 20px rgba(255, 107, 53, 0.35) !important;
+  transform: translateY(-1px);
+}
+
+/* ------------------------------------------------
+ * 12. Testimonial Cards — Refined Border
+ * ------------------------------------------------ */
+.testimonials-card {
+  border-left: 3px solid var(--accent);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.testimonials-card:hover {
+  transform: translateY(-2px);
+}
+
+/* ------------------------------------------------
+ * 13. About Page — Info Items Hover
+ * ------------------------------------------------ */
+.about-info__item {
+  transition: padding-left 0.25s ease;
+}
+
+.about-info__item:hover {
+  padding-left: 0.5rem;
+}
+
+.about-info__item:hover h6 {
+  color: var(--t-accent);
+}
+
+/* ------------------------------------------------
+ * 14. General Micro-Interactions
+ * ------------------------------------------------ */
+
+/* Rounded tags - slight lift on hover */
+.rounded-tag {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rounded-tag:hover {
+  transform: translateY(-1px);
+}
+
+/* ------------------------------------------------
+ * 15. Section First — Remove Top Spacing Issue
+ * ------------------------------------------------ */
+.inner-first {
+  padding-top: 2rem;
+}
+
+/* ------------------------------------------------
+ * 16. Dark Mode Overrides
+ * ------------------------------------------------ */
+[color-scheme="dark"] .availability-badge {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+[color-scheme="dark"] .portfolio-card-visual--1 {
+  background: linear-gradient(135deg, #0d0d1f 0%, #0a1628 50%, #0a2040 100%);
+}
+[color-scheme="dark"] .portfolio-card-visual--2 {
+  background: linear-gradient(135deg, #0d0b2b 0%, #1a1660 50%, #201b80 100%);
+}
+[color-scheme="dark"] .portfolio-card-visual--3 {
+  background: linear-gradient(135deg, #0d1a0d 0%, #0a3018 50%, #0d3d1c 100%);
+}
+[color-scheme="dark"] .portfolio-card-visual--4 {
+  background: linear-gradient(135deg, #111110 0%, #28251f 50%, #35302b 100%);
+}
+
+/* ------------------------------------------------
+ * 17. Responsive Tweaks
+ * ------------------------------------------------ */
+@media (max-width: 768px) {
+  .portfolio-card-icon {
+    font-size: 3rem;
+  }
+
+  .headline__btnholder {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .availability-badge {
+    font-size: 0.72rem;
+  }
+}

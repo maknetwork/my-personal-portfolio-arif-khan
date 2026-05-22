@@ -135,6 +135,9 @@
     <noscript><link rel="stylesheet" href="css/main.css" /></noscript>
     <!-- Template Styles End -->
 
+    <!-- Custom UI Enhancements -->
+    <link rel="stylesheet" href="css/enhancements.css" />
+
     <!-- Vanta.js 3D Minimalist Libraries Start -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
@@ -571,7 +574,7 @@
         <div class="avatar__block">
           <h6>
             <small class="top">Specialization:</small>
-            Full Stack Developer<br />Backend & Cloud Expert
+            Full Stack Developer<br />Backend &amp; Cloud Expert
           </h6>
         </div>
         <!-- data caption #2 -->
@@ -737,10 +740,9 @@
         </section>
         <!-- Intro Section End -->
 
-        <!--
-        Portfolio Section Start - COMMENTED OUT
+        <!-- Portfolio Section Start -->
         <section id="portfolio" class="inner inner-first portfolio">
-          Content Block - H2 Section Title Start
+          <!-- Content Block - H2 Section Title Start -->
           <div class="content__block section-grid-title">
             <p class="h2__subtitle animate-in-up">
               <svg
@@ -762,12 +764,12 @@
               <span>Projects</span>
             </p>
             <h2 class="h2__title animate-in-up">
-              Enterprise-Grade Projects & Production-Ready Solutions
+              Enterprise-Grade Projects &amp; Production-Ready Solutions
             </h2>
           </div>
-          Content Block - H2 Section Title End
+          <!-- Content Block - H2 Section Title End -->
 
-          Content Block - Works Gallery Start
+          <!-- Content Block - Works Gallery Start -->
           <div class="content__block grid-block">
             <div class="container-fluid px-0 inner__gallery">
               <div
@@ -775,28 +777,19 @@
                 itemscope
                 itemtype="http://schema.org/ImageGallery"
               >
-                Works Gallery Single Item Start
+                <!-- Works Gallery Single Item Start -->
                 <figure
                   class="col-12 col-md-6 gallery__item grid-item animate-card-2"
                   itemprop="associatedMedia"
                   itemscope
                   itemtype="http://schema.org/ImageObject"
                 >
-                  <a
-                    href="https://dummyimage.com/1400x1400/3c3c3c/636363"
-                    data-image="https://dummyimage.com/800x800/3c3c3c/636363"
-                    class="gallery__link"
-                    itemprop="contentUrl"
-                    data-size="1400x1400"
-                  >
-                    <img
-                      src="https://dummyimage.com/800x800/3c3c3c/636363"
-                      class="gallery__image"
-                      itemprop="thumbnail"
-                      alt="Vurve.ai Project"
-                      loading="lazy"
-                    />
-                  </a>
+                  <div class="portfolio-card-visual portfolio-card-visual--1" itemprop="contentUrl">
+                    <div class="portfolio-card-icon">
+                      <i class="ph-bold ph-robot"></i>
+                    </div>
+                    <div class="portfolio-card-label">AI Platform</div>
+                  </div>
                   <figcaption
                     class="gallery__descr"
                     itemprop="caption description"
@@ -816,29 +809,21 @@
                     </p>
                   </figcaption>
                 </figure>
-                Works Gallery Single Item End
+                <!-- Works Gallery Single Item End -->
 
-                Works Gallery Single Item Start
+                <!-- Works Gallery Single Item Start -->
                 <figure
                   class="col-12 col-md-6 gallery__item grid-item animate-card-2"
                   itemprop="associatedMedia"
                   itemscope
                   itemtype="http://schema.org/ImageObject"
                 >
-                  <a
-                    href="https://dummyimage.com/1400x1400/3c3c3c/636363"
-                    data-image="https://dummyimage.com/800x800/3c3c3c/636363"
-                    class="gallery__link"
-                    itemprop="contentUrl"
-                    data-size="1400x1400"
-                  >
-                    <img
-                      src="https://dummyimage.com/800x800/3c3c3c/636363"
-                      class="gallery__image"
-                      itemprop="thumbnail"
-                      alt="Asana WhatsApp Integration"
-                    />
-                  </a>
+                  <div class="portfolio-card-visual portfolio-card-visual--2" itemprop="contentUrl">
+                    <div class="portfolio-card-icon">
+                      <i class="ph-bold ph-chat-circle-dots"></i>
+                    </div>
+                    <div class="portfolio-card-label">Integration</div>
+                  </div>
                   <figcaption
                     class="gallery__descr opposite"
                     itemprop="caption description"
@@ -857,30 +842,21 @@
                     </p>
                   </figcaption>
                 </figure>
-                Works Gallery Single Item End
+                <!-- Works Gallery Single Item End -->
 
-                Works Gallery Single Item Start
+                <!-- Works Gallery Single Item Start -->
                 <figure
                   class="col-12 col-md-6 gallery__item grid-item animate-card-2"
                   itemprop="associatedMedia"
                   itemscope
                   itemtype="http://schema.org/ImageObject"
                 >
-                  <a
-                    href="https://dummyimage.com/1400x1400/3c3c3c/636363"
-                    data-image="https://dummyimage.com/800x800/3c3c3c/636363"
-                    class="gallery__link"
-                    itemprop="contentUrl"
-                    data-size="1400x1400"
-                  >
-                    <img
-                      src="https://dummyimage.com/800x800/3c3c3c/636363"
-                      class="gallery__image"
-                      itemprop="thumbnail"
-                      alt="Field Service Platform"
-                      loading="lazy"
-                    />
-                  </a>
+                  <div class="portfolio-card-visual portfolio-card-visual--3" itemprop="contentUrl">
+                    <div class="portfolio-card-icon">
+                      <i class="ph-bold ph-device-mobile"></i>
+                    </div>
+                    <div class="portfolio-card-label">Mobile + Web</div>
+                  </div>
                   <figcaption
                     class="gallery__descr opposite"
                     itemprop="caption description"
@@ -898,30 +874,21 @@
                     </p>
                   </figcaption>
                 </figure>
-                Works Gallery Single Item End
+                <!-- Works Gallery Single Item End -->
 
-                Works Gallery Single Item Start
+                <!-- Works Gallery Single Item Start -->
                 <figure
                   class="col-12 col-md-6 gallery__item grid-item animate-card-2"
                   itemprop="associatedMedia"
                   itemscope
                   itemtype="http://schema.org/ImageObject"
                 >
-                  <a
-                    href="https://dummyimage.com/1400x1400/3c3c3c/636363"
-                    data-image="https://dummyimage.com/800x800/3c3c3c/636363"
-                    class="gallery__link"
-                    itemprop="contentUrl"
-                    data-size="1400x1400"
-                  >
-                    <img
-                      src="https://dummyimage.com/800x800/3c3c3c/636363"
-                      class="gallery__image"
-                      itemprop="thumbnail"
-                      alt="Enterprise Solutions"
-                      loading="lazy"
-                    />
-                  </a>
+                  <div class="portfolio-card-visual portfolio-card-visual--4" itemprop="contentUrl">
+                    <div class="portfolio-card-icon">
+                      <i class="ph-bold ph-chats"></i>
+                    </div>
+                    <div class="portfolio-card-label">SaaS</div>
+                  </div>
                   <figcaption
                     class="gallery__descr"
                     itemprop="caption description"
@@ -939,14 +906,13 @@
                     </p>
                   </figcaption>
                 </figure>
-                Works Gallery Single Item End
+                <!-- Works Gallery Single Item End -->
               </div>
             </div>
           </div>
-          Content Block - Works Gallery End
+          <!-- Content Block - Works Gallery End -->
         </section>
-        Portfolio Section End
-        -->
+        <!-- Portfolio Section End -->
 
         <!-- About Section Start -->
         <section id="about" class="inner about">
@@ -1110,7 +1076,7 @@
                         <span class="rounded-tag tag-outline">REST APIs</span>
                       </div>
                       <p class="small cards__text animate-in-up">
-                        Building scalable backend systems with Node.js, Python,
+                        Building scalable backend systems with Node.js, Python, Express.js, and FastAPI — including REST APIs, GraphQL, WebSockets, and microservices architecture.
                       </p>
                     </div>
                     <div class="cards__image d-flex animate-in-up">
@@ -1138,8 +1104,7 @@
                         <span class="rounded-tag tag-outline">HTML/CSS</span>
                       </div>
                       <p class="small cards__text animate-in-up">
-                        Experienced in building responsive web applications with
-                        React, Next.js, and modern JavaScript
+                        Building responsive, performant web applications with React, Next.js, TypeScript, and modern JavaScript — from pixel-perfect UIs to complex SPAs.
                       </p>
                     </div>
                     <div class="cards__image d-flex animate-in-up">
@@ -1166,7 +1131,7 @@
                         <span class="rounded-tag tag-outline">Jenkins</span>
                       </div>
                       <p class="small cards__text animate-in-up">
-                        Experienced with AWS, Google Cloud Platform, Docker
+                        Deploying and managing cloud infrastructure on AWS, GCP, and Azure using Docker, Kubernetes, and CI/CD pipelines with Jenkins and GitHub Actions.
                       </p>
                     </div>
                     <div class="cards__image d-flex">
@@ -1872,7 +1837,7 @@
                 <input
                   type="hidden"
                   name="admin_email"
-                  value="support@mixdesign.club"
+                  value="arifwip@gmail.com"
                 />
                 <input
                   type="hidden"
@@ -1904,7 +1869,7 @@
                         type="email"
                         name="E-mail"
                         id="email"
-                        placeholder="Email Adress*"
+                        placeholder="Email Address*"
                         required
                       />
                     </div>
