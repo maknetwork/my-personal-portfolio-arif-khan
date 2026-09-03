@@ -1,4 +1,3 @@
-git push -u origin main
 # Operating System Files
 .DS_Store
 .DS_Store?
@@ -47,3 +46,6 @@ build/
 *.tmp
 *.temp
 .cache/
+
+# Wrangler local cache/state
+.wrangler/
