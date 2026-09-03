@@ -44,8 +44,58 @@
 /* ------------------------------------------------*/
 /* Fonts Start */
 /* ------------------------------------------------*/
-/* Space Grotesk and Inter fonts */
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+/* PP Neue Montreal (body) and PP Editorial New (display) — self-hosted,
+   declared with @font-face (not @import, which would delay discovery
+   until this file itself loads). */
+@font-face {
+  font-family: "Neue Montreal";
+  src:
+    url("../fonts/neue-montreal/NeueMontreal-Regular.woff2") format("woff2"),
+    url("../fonts/neue-montreal/NeueMontreal-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Montreal";
+  src:
+    url("../fonts/neue-montreal/NeueMontreal-Medium.woff2") format("woff2"),
+    url("../fonts/neue-montreal/NeueMontreal-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Montreal";
+  src:
+    url("../fonts/neue-montreal/NeueMontreal-Bold.woff2") format("woff2"),
+    url("../fonts/neue-montreal/NeueMontreal-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Editorial New";
+  src:
+    url("../fonts/editorial-new/EditorialNew-Regular.woff2") format("woff2"),
+    url("../fonts/editorial-new/EditorialNew-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Editorial New";
+  src:
+    url("../fonts/editorial-new/EditorialNew-Bold.woff2") format("woff2"),
+    url("../fonts/editorial-new/EditorialNew-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 /* ------------------------------------------------*/
 /* Fonts End */
 /* ------------------------------------------------*/
@@ -64,8 +114,8 @@
 /* ------------------------------------------------*/
 :root {
   --_size: 1.6rem;
-  --_font-default: "Inter", sans-serif;
-  --_font-accent: "Space Grotesk", sans-serif;
+  --_font-default: "Neue Montreal", sans-serif;
+  --_font-accent: "Editorial New", serif;
   --_radius-s: 1.5rem;
   --_radius-m: 2.2rem;
   --_radius-l: 3rem;
@@ -346,7 +396,7 @@ body {
   position: relative;
   width: 100%;
   min-width: 360px;
-  overflow-x: unset !important;
+  overflow-x: hidden !important;
   font: normal 400 var(--_size)/1.4 var(--_font-default);
   text-rendering: optimizeLegibility;
   background-color: var(--base);

@@ -287,15 +287,20 @@ $(function () {
   // Swiper Slider Start
   // --------------------------------------------- //
   const toolsSlider = document.querySelector("tools-slider");
-  const testimonialsSlider = document.querySelector("testimonials-slider");
+  const testimonialsSlider = document.querySelector(".swiper-testimonials");
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   if (!toolsSlider) {
     const swiper = new Swiper(".swiper-tools", {
       spaceBetween: 20,
-      autoplay: {
-        delay: 1500,
-        disableOnInteraction: false,
-      },
+      autoplay: prefersReducedMotion
+        ? false
+        : {
+            delay: 1500,
+            disableOnInteraction: false,
+          },
       loop: true,
       grabCursor: true,
       loopFillGroupWithBlank: true,
@@ -323,7 +328,7 @@ $(function () {
     });
   }
 
-  if (!testimonialsSlider) {
+  if (testimonialsSlider) {
     const swiper = new Swiper(".swiper-testimonials", {
       slidesPerView: 1,
       spaceBetween: 20,
@@ -344,12 +349,9 @@ $(function () {
   // --------------------------------------------- //
   // Contact Form Start
   // --------------------------------------------- //
-  // Replace with your actual keys
-  const SUPABASE_ANON_KEY =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtyYW5ldHZsZ2h0cXZ1dWtybnB5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk0MzE0MDgsImV4cCI6MjA4NTAwNzQwOH0.jefNTR-3P2WaoR4-1FQiixoUOQdJUcRX27nqJy2cxyE";
   const RECAPTCHA_SITE_KEY = "6Lcfs1csAAAAALnh7gLTMQ_z1NxfVzfKtGMeTwIv"; // From Google reCAPTCHA console
-  const FUNCTION_URL =
-    "https://kranetvlghtqvuukrnpy.supabase.co/functions/v1/submit-contact-form";
+  // Cloudflare Worker: cloudflare-worker/contact-form/ (verifies reCAPTCHA, sends via Resend)
+  const FUNCTION_URL = "https://mohdarifkhan-contact-form.wikiassure.workers.dev";
 
   // TEST MODE - Function to preview success animation
   window.testSuccessAnimation = function () {
@@ -660,9 +662,7 @@ $(function () {
     // Get form data
     const formData = {
       name: document.getElementById("name").value.trim(),
-      company: document.getElementById("company").value.trim() || undefined,
       email: document.getElementById("email").value.trim(),
-      phone: document.getElementById("phone").value.trim() || undefined,
       message: document.getElementById("message").value.trim(),
     };
 
@@ -707,7 +707,6 @@ $(function () {
       const response = await fetch(FUNCTION_URL, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),

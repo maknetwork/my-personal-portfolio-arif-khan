@@ -54,10 +54,26 @@
     </script>
 
     <!-- DNS Prefetch & Preconnect for Performance -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://www.google.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+    <!-- Web Fonts: PP Neue Montreal & PP Editorial New are self-hosted and
+         declared via @font-face in css/main.css; preload the two weights
+         used above the fold so they're discovered immediately. -->
+    <link
+      rel="preload"
+      href="fonts/neue-montreal/NeueMontreal-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/editorial-new/EditorialNew-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <!-- Facebook Metadata Start -->
     <meta property="og:type" content="website" />
@@ -143,8 +159,8 @@
     <link rel="stylesheet" href="css/enhancements.css" />
 
     <!-- Vanta.js 3D Minimalist Libraries Start -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
     <!-- Vanta.js 3D Minimalist Libraries End -->
 
     <!-- Custom 3D Wave Styles Start -->
@@ -427,7 +443,7 @@
           class="header__trigger btn"
           href="mailto:arifwip@gmail.com"
         >
-          <span class="trigger__caption">Let's Talk</span>
+          <span class="trigger__caption">Contact Me</span>
           <i class="ph-bold ph-chat-dots"></i>
         </a>
       </div>
@@ -501,21 +517,14 @@
             />
           </div>
         </div>
-        <!-- data caption #1 -->
-        <div class="avatar__block">
-          <h6>
-            <small class="top">Specialization:</small>
-            Full Stack Developer<br />Backend &amp; Cloud Expert
-          </h6>
-        </div>
-        <!-- data caption #2 -->
+        <!-- data caption -->
         <div class="avatar__block">
           <h6>
             <small class="top">Based in:</small>
             Gurugram, Haryana, India
           </h6>
         </div>
-        <!-- socials and CTA button -->
+        <!-- socials -->
         <div class="avatar__block">
           <div class="avatar__socials">
             <ul class="socials-square d-flex justify-content-between">
@@ -557,15 +566,6 @@
               </li>
             </ul>
           </div>
-          <div class="avatar__btnholder">
-            <a
-              class="btn btn-default btn-fullwidth btn-hover btn-hover-accent"
-              href="#contact"
-              aria-label="Navigate to contact section"
-            >
-              <span class="btn-caption">Let's Work Together!</span>
-            </a>
-          </div>
         </div>
       </div>
     </div>
@@ -599,35 +599,38 @@
                   C11.8,7.9,10.2,8,9.1,9.1c-1,1-1.2,2.7-1.7,3.5C7,13.1,6,13.1,5.6,12.6z"
                 />
               </svg>
-              <span>Welcome!</span>
+              <span>Open to full-time roles · India</span>
             </p>
             <h1 class="headline__title animate-headline">
-              I'm Mohd Arif Khan<br />Full Stack Developer
+              Backend-Heavy<br />Full-Stack Engineer
             </h1>
+            <div class="headline__text animate-headline">
+              <p>
+                I build event-driven backend systems, APIs, and real-time
+                platforms — from FastAPI microservices to WhatsApp
+                integrations serving thousands of users.
+              </p>
+              <p>
+                <small
+                  >4+ years experience · Gurugram, India · Full-time &amp;
+                  freelance engagements</small
+                >
+              </p>
+            </div>
             <div class="headline__btnholder d-flex flex-column flex-sm-row">
               <a
                 class="btn mobile-vertical btn-default btn-hover btn-hover-accent-mobile animate-headline"
                 href="#portfolio"
               >
-                <span class="btn-caption">My Projects</span>
+                <span class="btn-caption">View Work</span>
                 <i class="ph-bold ph-squares-four"></i>
               </a>
               <a
-                class="btn mobile-vertical btn-default btn-hover btn-hover-accent-mobile animate-headline"
+                class="btn mobile-vertical btn-default btn-hover btn-hover-outline-mobile animate-headline"
                 href="resume-viewer.html"
               >
-                <span class="btn-caption">View Resume</span>
+                <span class="btn-caption">Resume</span>
                 <i class="ph-bold ph-file-text"></i>
-              </a>
-              <a
-                class="btn mobile-vertical btn-default btn-hover btn-hover-outline-mobile animate-headline"
-                href="https://drive.google.com/file/d/1ejYUowScL_59j7IWyWszQ-a97qUR0QkY/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Download Mohd Arif Khan's CV (opens in new tab)"
-              >
-                <span class="btn-caption">Download CV</span>
-                <i class="ph-bold ph-download-simple"></i>
               </a>
             </div>
           </div>
@@ -697,7 +700,7 @@
               <span>Projects</span>
             </p>
             <h2 class="h2__title animate-in-up">
-              Enterprise-Grade Projects &amp; Production-Ready Solutions
+              Selected Projects &amp; Case Studies
             </h2>
           </div>
           <!-- Content Block - H2 Section Title End -->
@@ -743,6 +746,12 @@
                       AI-powered cart abandonment system with multi-channel
                       recovery workflows.
                     </p>
+                    <p class="small card__role">
+                      <strong>My role:</strong> Lead Engineer — architected the
+                      event-driven backend and campaign delivery engine end to
+                      end.
+                    </p>
+                    <!-- TODO(arif): add live demo / repo link or written case-study link here -->
                   </figcaption>
                 </figure>
                 <!-- Works Gallery Single Item End -->
@@ -779,6 +788,12 @@
                       messages for 1000+ users with OAuth 2.0 authentication and
                       distributed worker system.
                     </p>
+                    <p class="small card__role">
+                      <strong>My role:</strong> Lead Engineer — designed the
+                      OAuth 2.0 integration and distributed worker system from
+                      scratch.
+                    </p>
+                    <!-- TODO(arif): add live demo / repo link or written case-study link here -->
                   </figcaption>
                 </figure>
                 <!-- Works Gallery Single Item End -->
@@ -814,6 +829,12 @@
                       real-time sync, reducing report completion time from 45
                       minutes to 7 minutes.
                     </p>
+                    <p class="small card__role">
+                      <strong>My role:</strong> Full Stack Developer — built
+                      the GraphQL API and the mobile form workflow that cut
+                      report time from 45 to 7 minutes.
+                    </p>
+                    <!-- TODO(arif): add live demo / repo link or written case-study link here -->
                   </figcaption>
                 </figure>
                 <!-- Works Gallery Single Item End -->
@@ -849,6 +870,12 @@
                       omnichannel support, and intelligent automation reducing
                       customer support interventions by 40%.
                     </p>
+                    <p class="small card__role">
+                      <strong>My role:</strong> Lead Developer — owned the
+                      multi-tenant architecture end to end, from WebSocket
+                      messaging to omnichannel routing.
+                    </p>
+                    <!-- TODO(arif): add live demo / repo link or written case-study link here -->
                   </figcaption>
                 </figure>
                 <!-- Works Gallery Single Item End -->
@@ -883,7 +910,7 @@
               <span>About Me</span>
             </p>
             <h2 class="h2__title animate-in-up">
-              Delivering High-Performance Solutions That Scale & Drive ROI
+              Building Backend Systems That Scale &amp; Drive ROI
             </h2>
           </div>
           <!-- Content Block - H2 Section Title End -->
@@ -898,8 +925,10 @@
                 class="achievements__item d-flex flex-column grid-item animate-card-3"
               >
                 <div class="achievements__card">
-                  <p class="achievements__number">50+</p>
-                  <p class="achievements__descr">Projects delivered</p>
+                  <p class="achievements__number">50K+</p>
+                  <p class="achievements__descr">
+                    Messages handled per campaign*
+                  </p>
                 </div>
               </div>
               <!-- achievements single item -->
@@ -916,11 +945,17 @@
                 class="achievements__item d-flex flex-column grid-item animate-card-3"
               >
                 <div class="achievements__card">
-                  <p class="achievements__number">40+</p>
-                  <p class="achievements__descr">Happy clients</p>
+                  <p class="achievements__number">15K+</p>
+                  <p class="achievements__descr">
+                    Reports processed in production&dagger;
+                  </p>
                 </div>
               </div>
             </div>
+            <p class="small achievements__footnote">
+              *Vurve.ai campaign delivery engine &nbsp;·&nbsp; &dagger;Field
+              Service Report Platform
+            </p>
           </div>
           <!-- Content Block - Achievements End -->
 
@@ -931,11 +966,10 @@
                 <!-- About Me Description Start -->
                 <div class="col-12 col-xl-8 grid-item about-descr">
                   <p class="about-descr__text animate-in-up">
-                    <strong>Senior Full Stack Developer</strong> with
-                    <strong>4+ years</strong> building
-                    <strong>enterprise-grade web applications</strong> for
-                    Indian and international clients. Specialized in
-                    <strong>backend development</strong> with
+                    <strong>Backend-Heavy Full-Stack Engineer</strong> with
+                    <strong>4+ years</strong> building production web
+                    applications for Indian and international clients.
+                    Specialized in <strong>backend development</strong> with
                     <strong>Node.js, Python, REST APIs, GraphQL</strong>, and
                     <strong
                       >cloud infrastructure (AWS, Docker, Kubernetes)</strong
@@ -948,7 +982,6 @@
                     <strong>MongoDB, PostgreSQL, Redis, microservices</strong>,
                     and <strong>automated testing</strong>. Known for strong
                     <strong>debugging and problem-solving skills</strong>.
-                    Seeking <strong>full-time opportunities in India</strong>.
                   </p>
                   <div class="btn-group about-descr__btnholder animate-in-up">
                     <a
@@ -956,7 +989,7 @@
                       href="mailto:arifwip@gmail.com"
                       aria-label="Contact Mohd Arif Khan via email"
                     >
-                      <span class="btn-caption">Hire Me - Get in Touch</span>
+                      <span class="btn-caption">Contact Me</span>
                       <i class="ph-bold ph-envelope"></i>
                     </a>
                   </div>
@@ -1021,7 +1054,7 @@
                         <span class="rounded-tag tag-outline">REST APIs</span>
                       </div>
                       <p class="small cards__text animate-in-up">
-                        Building scalable backend systems with Node.js, Python,
+                        Building backend systems with Node.js, Python,
                         Express.js, and FastAPI — including REST APIs, GraphQL,
                         WebSockets, and microservices architecture.
                       </p>
@@ -1162,87 +1195,20 @@
               <strong
                 >4+ years of hands-on software development experience</strong
               >
-              delivering <strong>enterprise-grade solutions</strong> for
-              startups and Fortune 500 companies. Proven expertise in
+              delivering <strong>production solutions</strong> for startups
+              and Fortune 500 companies. Proven expertise in
               <strong
                 >full-stack development, microservices architecture, cloud
                 infrastructure (AWS, Docker, Kubernetes)</strong
-              >, and <strong>scalable backend systems</strong>. Through
+              >, and <strong>backend systems built to scale</strong>. Through
               full-time roles, freelancing on Fiverr/Upwork (40+ projects, 100%
               success rate), and technical internships, I've built a
               comprehensive skill set in
               <strong>Node.js, Python, React, MongoDB, PostgreSQL, Redis</strong
               >, and modern DevOps practices.
-              <strong>Available for immediate joining</strong> for full-time
-              positions in India.
             </p>
           </div>
           <!-- Content Block - H2 Section Title End -->
-
-          <!-- Content Block - Education Start -->
-          <div class="content__block block-large">
-            <!-- H3 Block Start -->
-            <div class="section-h3">
-              <h3 class="h3__title animate-in-up">My education</h3>
-            </div>
-            <!-- H3 Block End -->
-
-            <!-- Education Lines Start -->
-            <div class="container-fluid p-0 resume-lines">
-              <!-- education single item -->
-              <div class="row g-0 resume-lines__item animate-in-up">
-                <div class="col-12 col-md-2">
-                  <span class="resume-lines__date animate-in-up"
-                    >2020 - 2024</span
-                  >
-                </div>
-                <div class="col-12 col-md-5">
-                  <h5 class="resume-lines__title animate-in-up">
-                    Bachelor of Technology
-                  </h5>
-                  <p class="resume-lines__source animate-in-up">
-                    <a href="https://www.quantumeducation.in/" class="text-link-bold" target="_blank" rel="noopener noreferrer"
-                      >Quantum University, Roorkee</a
-                    >
-                  </p>
-                </div>
-                <div class="col-12 col-md-5">
-                  <p class="small resume-lines__descr animate-in-up">
-                    <strong>Computer Science & Engineering</strong>, CGPA:
-                    8.4/10.0. <strong>First Position</strong> in Inter-College
-                    Hackathon. Participated in TCS IT WIZ and multiple technical
-                    competitions. Strong foundation in Data Structures,
-                    Algorithms, System Design, Database Management, and Cloud
-                    Computing.
-                  </p>
-                </div>
-              </div>
-              <!-- education single item -->
-              <div class="row g-0 resume-lines__item animate-in-up">
-                <div class="col-12 col-md-2">
-                  <span class="resume-lines__date animate-in-up">2019</span>
-                </div>
-                <div class="col-12 col-md-5">
-                  <h5 class="resume-lines__title animate-in-up">
-                    High School Diploma
-                  </h5>
-                  <p class="resume-lines__source animate-in-up">
-                    <span class="text-link-bold"
-                      >Colonel's Central Academy School</span
-                    >
-                  </p>
-                </div>
-                <div class="col-12 col-md-5">
-                  <p class="small resume-lines__descr animate-in-up">
-                    Awards: 2nd place university website design competition, 1st
-                    place interhouse IT quiz, Won I.T. Wizard prize.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- Education Lines End -->
-          </div>
-          <!-- Content Block - Education End -->
 
           <!-- Content Block - Experience Start -->
           <div class="content__block block-large">
@@ -1290,7 +1256,7 @@
                   <p class="small resume-lines__descr animate-in-up">
                     <strong>Leading enterprise AI solutions</strong> and
                     multi-tenant SaaS platform development. Architected
-                    <strong>scalable chat applications</strong> with
+                    <strong>chat applications</strong> with
                     <strong>real-time WebSocket messaging</strong>, processing
                     <strong>10K+ daily messages</strong>. Achieved
                     <strong
@@ -1388,7 +1354,7 @@
                     >
                     serving <strong>Nestlé</strong> and other Fortune 500
                     clients. Built
-                    <strong>high-performance infrastructure</strong> using
+                    <strong>backend infrastructure</strong> using
                     <strong>Node.js, Express.js, PostgreSQL</strong>, optimizing
                     query performance by <strong>40%</strong> and reducing API
                     response time by <strong>30%</strong>.
@@ -1399,6 +1365,49 @@
             <!-- Experience Lines End -->
           </div>
           <!-- Content Block - Experience End -->
+
+          <!-- Content Block - Education Start -->
+          <div class="content__block block-large">
+            <!-- H3 Block Start -->
+            <div class="section-h3">
+              <h3 class="h3__title animate-in-up">My education</h3>
+            </div>
+            <!-- H3 Block End -->
+
+            <!-- Education Lines Start -->
+            <div class="container-fluid p-0 resume-lines">
+              <!-- education single item -->
+              <div class="row g-0 resume-lines__item animate-in-up">
+                <div class="col-12 col-md-2">
+                  <span class="resume-lines__date animate-in-up"
+                    >2020 - 2024</span
+                  >
+                </div>
+                <div class="col-12 col-md-5">
+                  <h5 class="resume-lines__title animate-in-up">
+                    Bachelor of Technology
+                  </h5>
+                  <p class="resume-lines__source animate-in-up">
+                    <a href="https://www.quantumeducation.in/" class="text-link-bold" target="_blank" rel="noopener noreferrer"
+                      >Quantum University, Roorkee</a
+                    >
+                  </p>
+                </div>
+                <div class="col-12 col-md-5">
+                  <p class="small resume-lines__descr animate-in-up">
+                    <strong>Computer Science & Engineering</strong>, CGPA:
+                    8.4/10.0. <strong>First Position</strong> in Inter-College
+                    Hackathon. Participated in TCS IT WIZ and multiple technical
+                    competitions. Strong foundation in Data Structures,
+                    Algorithms, System Design, Database Management, and Cloud
+                    Computing.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Education Lines End -->
+          </div>
+          <!-- Content Block - Education End -->
 
           <!-- Content Block - H3 Block Start -->
           <div class="content__block">
@@ -1585,152 +1594,6 @@
           </div>
           <!-- Content Block - Tools List End -->
 
-          <!-- Content Block - H2 Block Start -->
-          <div class="content__block section-title">
-            <p class="h2__subtitle animate-in-up">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                width="13px"
-                height="13px"
-                viewBox="0 0 13 13"
-                fill="currentColor"
-              >
-                <path
-                  fill="currentColor"
-                  d="M5.6,12.6c-0.5-0.8-0.7-2.4-1.7-3.5c-1-1-2.7-1.2-3.5-1.7C-0.1,7-0.1,6,0.4,5.6c0.8-0.5,2.3-0.6,3.5-1.8
-                  C5,2.8,5.1,1.2,5.6,0.4C6-0.1,7-0.1,7.4,0.4c0.5,0.8,0.7,2.4,1.8,3.5c1.2,1.2,2.6,1.2,3.5,1.7c0.6,0.4,0.6,1.4,0,1.7
-                  C11.8,7.9,10.2,8,9.1,9.1c-1,1-1.2,2.7-1.7,3.5C7,13.1,6,13.1,5.6,12.6z"
-                />
-              </svg>
-              <span>Recommendations</span>
-            </p>
-            <h2 class="h2__title animate-in-up">Client Feedback</h2>
-          </div>
-          <!-- Content Block - H2 Block End -->
-
-          <!-- Content Block - Testimonials Slider Start -->
-          <div class="content__block">
-            <!-- Testimonials Slider Start -->
-            <div class="testimonials-slider">
-              <!-- slider main container -->
-              <div class="swiper-testimonials">
-                <!-- additional required wrapper -->
-                <div class="swiper-wrapper">
-                  <!-- slides -->
-                  <div class="swiper-slide">
-                    <div class="testimonials-card animate-in-up">
-                      <div
-                        class="testimonials-card__tauthor d-flex animate-in-up"
-                      >
-                        <div class="tauthor__avatar">
-                          <img
-                            src="https://ui-avatars.com/api/?name=Enterprise+Client&size=400&background=FF8C42&color=fff&bold=true"
-                            alt="Enterprise Client - Fortune 500 Company Project Manager"
-                            loading="lazy"
-                            width="400"
-                            height="400"
-                          />
-                        </div>
-                        <div
-                          class="tauthor__info d-flex flex-column justify-content-center"
-                        >
-                          <p class="tauthor__name">Enterprise Client</p>
-                          <p class="tauthor__position">
-                            Project Manager at
-                            <span class="text-link-bold"
-                              >Fortune 500 Company</span
-                            >
-                          </p>
-                          <div class="tauthor__rating d-flex">
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="testimonials-card__descr animate-in-up">
-                        <p>
-                          Exceptional full-stack developer with deep expertise
-                          in backend systems. Arif delivered a complex
-                          multi-tenant platform ahead of schedule. His
-                          problem-solving abilities and attention to detail are
-                          outstanding.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="testimonials-card animate-in-up">
-                      <div
-                        class="testimonials-card__tauthor d-flex animate-in-up"
-                      >
-                        <div class="tauthor__avatar">
-                          <img
-                            src="https://ui-avatars.com/api/?name=International+Client&size=400&background=6366F1&color=fff&bold=true"
-                            alt="International Client - Tech Startup CTO"
-                            loading="lazy"
-                            width="400"
-                            height="400"
-                          />
-                        </div>
-                        <div
-                          class="tauthor__info d-flex flex-column justify-content-center"
-                        >
-                          <p class="tauthor__name">International Client</p>
-                          <p class="tauthor__position">
-                            CTO at
-                            <span class="text-link-bold">Tech Startup</span>
-                          </p>
-                          <div class="tauthor__rating d-flex">
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="testimonials-card__descr animate-in-up">
-                        <p>
-                          Working with Arif was fantastic. He built our entire
-                          backend infrastructure from scratch using Node.js and
-                          MongoDB. His expertise in real-time systems and API
-                          design transformed our product. Highly recommended!
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- navigation buttons -->
-                <div
-                  class="swiper-button-prev mxd-slider-btn-square mxd-slider-btn-square-prev animate-in-up"
-                >
-                  <a
-                    class="btn btn-square btn-square-s btn-outline slide-left"
-                    href="#0"
-                  >
-                    <i class="ph-bold ph-caret-left"></i>
-                  </a>
-                </div>
-                <div
-                  class="swiper-button-next mxd-slider-btn-square mxd-slider-btn-square-next animate-in-up"
-                >
-                  <a
-                    class="btn btn-square btn-square-s btn-outline slide-right"
-                    href="#0"
-                  >
-                    <i class="ph-bold ph-caret-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- Testimonials Slider End -->
-          </div>
-          <!-- Content Block - Testimonials Slider End -->
         </section>
         <!-- Resume Section End -->
 
@@ -1799,6 +1662,7 @@
                 <div class="container-fluid p-0">
                   <div class="row gx-0">
                     <div class="col-12 col-md-6 form__item animate-in-up">
+                      <label class="visually-hidden" for="name">Name</label>
                       <input
                         type="text"
                         name="Name"
@@ -1808,14 +1672,9 @@
                       />
                     </div>
                     <div class="col-12 col-md-6 form__item animate-in-up">
-                      <input
-                        type="text"
-                        name="Company"
-                        id="company"
-                        placeholder="Company Name"
-                      />
-                    </div>
-                    <div class="col-12 col-md-6 form__item animate-in-up">
+                      <label class="visually-hidden" for="email"
+                        >Email address</label
+                      >
                       <input
                         type="email"
                         name="E-mail"
@@ -1824,16 +1683,10 @@
                         required
                       />
                     </div>
-                    <div class="col-12 col-md-6 form__item animate-in-up">
-                      <input
-                        type="tel"
-                        name="Phone"
-                        id="phone"
-                        placeholder="Phone Number*"
-                        required
-                      />
-                    </div>
                     <div class="col-12 form__item animate-in-up">
+                      <label class="visually-hidden" for="message"
+                        >Message</label
+                      >
                       <textarea
                         name="Message"
                         id="message"
@@ -1924,9 +1777,8 @@
                 <strong>Full Stack Developer in India</strong>? Let's discuss
                 your <strong>Node.js, React, or Python</strong> project!
                 <a class="text-link-bold" href="mailto:arifwip@gmail.com"
-                  >Contact me</a
-                >
-                - Available for <strong>immediate joining</strong>.
+                  >Contact Me</a
+                >.
               </p>
             </div>
           </div>
@@ -2067,32 +1919,39 @@
     ></script>
     <script defer>
       gsap.registerPlugin(ScrollTrigger);
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
       const content = document.querySelector("body"),
         imgLoad = imagesLoaded(content);
       imgLoad.on("done", (e) => {
-        (document.getElementById("loaderContent").classList.add("fade-out"),
-          setTimeout(() => {
-            document.getElementById("loader").classList.add("loaded");
-          }, 300),
-          gsap.set(".animate-headline", { y: 50, opacity: 0 }),
-          ScrollTrigger.batch(".animate-headline", {
-            interval: 0.1,
-            batchMax: 4,
-            duration: 6,
-            onEnter: (e) =>
-              gsap.to(e, {
-                opacity: 1,
-                y: 0,
-                ease: "sine",
-                stagger: { each: 0.15, grid: [1, 4] },
-                overwrite: !0,
-              }),
-            onLeave: (e) => gsap.set(e, { opacity: 1, y: 0, overwrite: !0 }),
-            onEnterBack: (e) =>
-              gsap.to(e, { opacity: 1, y: 0, stagger: 0.15, overwrite: !0 }),
-            onLeaveBack: (e) =>
-              gsap.set(e, { opacity: 0, y: 50, overwrite: !0 }),
-          }));
+        document.getElementById("loaderContent").classList.add("fade-out");
+        setTimeout(() => {
+          document.getElementById("loader").classList.add("loaded");
+        }, 300);
+        if (prefersReducedMotion) {
+          gsap.set(".animate-headline", { y: 0, opacity: 1 });
+          return;
+        }
+        gsap.set(".animate-headline", { y: 50, opacity: 0 });
+        ScrollTrigger.batch(".animate-headline", {
+          interval: 0.1,
+          batchMax: 4,
+          duration: 6,
+          onEnter: (e) =>
+            gsap.to(e, {
+              opacity: 1,
+              y: 0,
+              ease: "sine",
+              stagger: { each: 0.15, grid: [1, 4] },
+              overwrite: !0,
+            }),
+          onLeave: (e) => gsap.set(e, { opacity: 1, y: 0, overwrite: !0 }),
+          onEnterBack: (e) =>
+            gsap.to(e, { opacity: 1, y: 0, stagger: 0.15, overwrite: !0 }),
+          onLeaveBack: (e) =>
+            gsap.set(e, { opacity: 0, y: 50, overwrite: !0 }),
+        });
       });
     </script>
     <script defer src="js/app.js"></script>
@@ -2120,6 +1979,9 @@
       }
 
       window.addEventListener("load", function () {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
         setTimeout(function () {
           if (typeof VANTA !== "undefined" && VANTA.DOTS) {
             // Get initial theme

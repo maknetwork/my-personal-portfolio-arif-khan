@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mohdarifkhan-contact-form",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+  "vars": {
+    "ALLOWED_ORIGIN": "https://mohdarifkhan.com",
+    "CONTACT_TO_EMAIL": "arifwip@gmail.com",
+    "CONTACT_FROM_EMAIL": "onboarding@resend.dev"
+  }
+}
